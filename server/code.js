@@ -1,3 +1,5 @@
+const AWS = require('aws-sdk');
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const tableName = process.env.DYNAMODB_TABLE;
 
 module.exports.detail = (event, context, callback) => {
