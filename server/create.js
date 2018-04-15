@@ -15,6 +15,7 @@ module.exports.create = (event, context, callback) => {
   try {
       body = JSON.parse(event.body);
   } catch (error) {
+    console.log(error)
     callback(
       null,
       {
