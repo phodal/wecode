@@ -1,10 +1,8 @@
 <view class="page__bd">
-  <view class="weui-cells" wx:for="{{codes}}" wx:key="idx" wx:for-index="idx">
-    <view class="weui-cell weui-cell_access weui-cell__hd" data-id="{{idx}}" data-row-id="{{codes[idx].id}}" bindtap="onItemClick">
-      <view class="weui-cell__bd">
-        <view>{{item.title}}</view>
-      </view>
-      <view class="weui-cell__ft">详情</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_access" wx:for="{{codes}}" wx:key="idx" wx:for-index="idx" hover-class="weui-cell_active" data-id="{{idx}}" data-row-id="{{codes[idx].id}}" bindtap="onItemClick">
+      <view class="weui-cell__bd">{{item.title}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">详情</view>
     </view>
   </view>
 </view>
