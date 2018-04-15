@@ -23,6 +23,8 @@ provider:
     - Action:
         - dynamodb:GetItem
         - dynamodb:PutItem
+        - dynamodb:Query
+        - dynamodb:Scan
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
       Effect: Allow
 
