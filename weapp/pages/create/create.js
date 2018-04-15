@@ -38,7 +38,7 @@ Page({
       })
     }
     wx.showLoading({
-      title: '加载中',
+      title: '创建中',
     })
     wx.request({
       url: 'https://code.wdsm.io/',
