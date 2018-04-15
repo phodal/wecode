@@ -6,7 +6,8 @@ Page({
   data: {
     htmlCode: '',
     height: 20,
-    focus: false
+    focus: false,
+    value: 'console.log("Phodal")'
   },
   bindButtonTap: function () {
     this.setData({
@@ -29,9 +30,10 @@ Page({
       header: {
         'content-type': 'application/json'
       },
-      success: function(res) {
+      success: function (res) {
         console.log(res)
-        WxParse.wxParse('code', 'html', res.data.code, that, 5);
+        let data = res.data.code.replace('<pre><code>', '').replace('</code></pre>', '');
+        WxParse.wxParse('article', 'html', data, that, 5);
       }
     })
 

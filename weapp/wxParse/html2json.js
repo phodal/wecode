@@ -1,13 +1,13 @@
 /**
  * html2Json 改造来自: https://github.com/Jxck/html2json
- * 
- * 
+ *
+ *
  * author: Di (微信小程序开发工程师)
  * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
  *               垂直微信小程序开发交流社区
- * 
+ *
  * github地址: https://github.com/icindy/wxParse
- * 
+ *
  * for: 微信小程序富文本解析
  * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
  */
@@ -18,8 +18,7 @@ var __emojisBaseSrc = '';
 var __emojis = {};
 var wxDiscode = require('./wxDiscode.js');
 var HTMLParser = require('./htmlparser.js');
-// Empty Elements - HTML 5
-var empty = makeMap("area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr");
+
 // Block Elements - HTML 5
 var block = makeMap("br,a,code,address,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,ins,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video");
 
@@ -30,20 +29,11 @@ var inline = makeMap("abbr,acronym,applet,b,basefont,bdo,big,button,cite,del,dfn
 // (and which close themselves)
 var closeSelf = makeMap("colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr");
 
-// Attributes that have their values filled in disabled="disabled"
-var fillAttrs = makeMap("checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected");
-
-// Special Elements (can contain anything)
-var special = makeMap("wxxxcode-style,script,style,view,scroll-view,block");
 function makeMap(str) {
     var obj = {}, items = str.split(",");
     for (var i = 0; i < items.length; i++)
         obj[items[i]] = true;
     return obj;
-}
-
-function q(v) {
-    return '"' + v + '"';
 }
 
 function removeDOCTYPE(html) {
@@ -110,7 +100,7 @@ function html2json(html, bindName) {
                     var value = attr.value;
                     if (name == 'class') {
                         console.dir(value);
-                        //  value = value.join("")
+                         // value = value.join("")
                         node.classStr = value;
                     }
                     // has multi attibutes
@@ -123,7 +113,7 @@ function html2json(html, bindName) {
                     if (value.match(/ /)) {
                         value = value.split(' ');
                     }
-                    
+
 
                     // if attr already exists
                     // merge it
@@ -157,7 +147,7 @@ function html2json(html, bindName) {
                 results.images.push(node);
                 results.imageUrls.push(imgUrl);
             }
-            
+
             // 处理font标签样式属性
             if (node.tag === 'font') {
                 var fontSize = ['x-small', 'small', 'medium', 'large', 'x-large', 'xx-large', '-webkit-xxx-large'];
@@ -182,7 +172,7 @@ function html2json(html, bindName) {
             if(node.tag === 'source'){
                 results.source = node.attr.src;
             }
-            
+
             if (unary) {
                 // if this tag doesn't have end tag
                 // like <img src="hoge.png"/>
@@ -207,7 +197,7 @@ function html2json(html, bindName) {
                 node.attr.src = results.source;
                 delete results.source;
             }
-            
+
             if (bufArray.length === 0) {
                 results.nodes.push(node);
             } else {
@@ -225,7 +215,7 @@ function html2json(html, bindName) {
                 text: text,
                 textArray:transEmojiStr(text)
             };
-            
+
             if (bufArray.length === 0) {
                 node.index = index.toString()
                 index += 1
@@ -258,7 +248,7 @@ function html2json(html, bindName) {
 function transEmojiStr(str){
   // var eReg = new RegExp("["+__reg+' '+"]");
 //   str = str.replace(/\[([^\[\]]+)\]/g,':$1:')
-  
+
   var emojiObjs = [];
   //如果正则表达式为空
   if(__emojisReg.length == 0 || !__emojis){
@@ -286,18 +276,11 @@ function transEmojiStr(str){
     }
     emojiObjs.push(emojiObj);
   }
-  
+
   return emojiObjs;
 }
 
-function emojisInit(reg='',baseSrc="/wxParse/emojis/",emojis){
-    __emojisReg = reg;
-    __emojisBaseSrc=baseSrc;
-    __emojis=emojis;
-}
-
 module.exports = {
-    html2json: html2json,
-    emojisInit:emojisInit
+    html2json: html2json
 };
 
