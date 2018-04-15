@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/create/create",
     "pages/logs/logs",
-    "pages/code/code"
+    "pages/code/code",
+    "pages/user/user"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -31,7 +32,7 @@
         "text": "创建"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/user/user",
         "iconPath": "images/info_black.png",
         "selectedIconPath": "images/info.png",
         "text": "我的"
