@@ -25,6 +25,9 @@ Page({
     })
   },
   setPageTitle: function (title) {
+    if (!title) {
+      return;
+    }
     this.setData({
       pageTitle: title
     })
