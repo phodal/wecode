@@ -1,3 +1,4 @@
+const base_page = `
 <html>
 <head>
   <meta charset="UTF-8">
@@ -33,7 +34,7 @@
 
       function updateOutput() {
         try {
-          $('#output').html(marked('```\n' + $('textarea#input').val() + '\n```'))
+          $('#output').html(marked('\`\`\`\\n' + $('textarea#input').val() + '\\n\`\`\`'))
         } catch(error) {
           alert(error)
         }
@@ -107,3 +108,15 @@
 </div>
 </body>
 </html>
+`;
+
+module.exports.handler = (event, context, callback) => {
+  callback(
+    null,
+    {
+      statusCode: 200,
+      body: base_page,
+      headers: {'Content-Type': 'text/html'},
+    }
+  );
+}

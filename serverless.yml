@@ -27,9 +27,18 @@ provider:
       Effect: Allow
 
 functions:
-  hello:
-    handler: server.handler.create
-
+  main:
+    handler: server/index.handler
+    events:
+      - http:
+          path: /
+          method: get
+  create:
+    handler: server/create.handler
+    events:
+      - http:
+          path: /
+          method: post
 
 resources:
   Resources:
@@ -38,7 +47,7 @@ resources:
       DeletionPolicy: Retain
       Properties:
         AttributeDefinitions:
-          - AttributeName: code
+          - AttributeName: id
             AttributeType: S
         KeySchema:
           - AttributeName: id
