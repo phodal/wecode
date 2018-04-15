@@ -24,6 +24,7 @@ Page({
       url: 'https://code.wdsm.io/',
       method: 'POST',
       data: {
+        title: e.detail.value.title,
         user_id: app.globalData.openid,
         code: '```\n' + e.detail.value.textarea + '\n```'
       },

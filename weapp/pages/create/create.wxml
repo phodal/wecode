@@ -1,13 +1,22 @@
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell">
+<form bindsubmit="bindFormSubmit">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">代码标题</view>
+    </view>
     <view class="weui-cell__bd">
-      <form bindsubmit="bindFormSubmit">
-        <textarea class="weui-textarea" maxlength="-1" name="textarea" value="{{value}}" auto-height focus placeholder-style="color:gray" cursor-spacing="0" fixed />
-        <view class="weui-footer  weui-footer_fixed-bottom">
-          <button form-type="submit"> 创建 </button>
-        </view>
-      </form>
+      <input class="weui-input" focus maxlength="20" type="text" placeholder="hello" />
     </view>
   </view>
-</view>
+  <view class="weui-cells__title">代码区</view>
 
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea required class="weui-textarea" rows="10" maxlength="-1" name="textarea" value="{{value}}" placeholder-style="color:gray" cursor-spacing="0" fixed />
+      </view>
+    </view>
+  </view>
+  <view class="weui-footer weui-footer_fixed-bottom">
+    <button class="weui-btn" type="primary" form-type="submit"> 创建 </button>
+  </view>
+</form>
