@@ -38,9 +38,9 @@ module.exports.list = (event, context, callback) => {
 
   const params = {
     TableName: tableName,
-    FilterExpression: 'user_id = :user_id',
+    FilterExpression: 'userId = :userId',
     ExpressionAttributeValues: {
-      ':user_id': userId
+      ':userId': userId
     }
   };
 
