@@ -1,10 +1,11 @@
 //app.js
 App({
+  globalData: {
+    openid: null,
+    userInfo: null
+  },
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    var that = this;
 
     // 登录
     wx.login({
@@ -20,7 +21,8 @@ App({
               'content-type': 'application/json'
             },
             success: function(res) {
-              console.log(res.data)
+              console.log(res, that.globalData)
+              that.globalData.openid = res.data.openid;
             }
           })
         } else {
@@ -48,8 +50,5 @@ App({
         }
       }
     })
-  },
-  globalData: {
-    userInfo: null
   }
 })
