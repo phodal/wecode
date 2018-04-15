@@ -32,15 +32,31 @@ const base_page = `
         }
       });
 
+      function getCode() {
+        return '\`\`\`\\n' + $('textarea#input').val() + '\\n\`\`\`';
+      }
+
       function updateOutput() {
         try {
-          $('#output').html(marked('\`\`\`\\n' + $('textarea#input').val() + '\\n\`\`\`'))
+          $('#output').html(marked(getCode()))
         } catch(error) {
           alert(error)
         }
       }
 
       $('#input').on('input keydown', updateOutput);
+      $('#create').click(function() {
+        $.post('/', {
+          id: 'user',
+          code: getCode()
+        })
+          .done(function (msg) {
+            console.log(msg)
+          })
+          .fail(function (xhr, status, error) {
+            alert(error)
+          });
+      });
 
       updateOutput();
 
@@ -101,7 +117,7 @@ const base_page = `
 
   <div class="col">
     <div class="header">
-      <button class="btn button">创建</button>
+      <button class="btn button" id="create">创建</button>
     </div>
     <div id="output"></div>
   </div>

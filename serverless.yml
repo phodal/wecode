@@ -34,7 +34,7 @@ functions:
           path: /
           method: get
   create:
-    handler: server/create.handler
+    handler: server/create.create
     events:
       - http:
           path: /
