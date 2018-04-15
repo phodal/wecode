@@ -32,12 +32,6 @@
       },
       {
         "pagePath": "pages/index/index",
-        "iconPath": "images/explore_black.png",
-        "selectedIconPath": "images/explore.png",
-        "text": "发现"
-      },
-      {
-        "pagePath": "pages/index/index",
         "iconPath": "images/info_black.png",
         "selectedIconPath": "images/info.png",
         "text": "我的"
