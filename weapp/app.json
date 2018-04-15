@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/create/create",
     "pages/logs/logs"
   ],
   "window": {
@@ -23,7 +24,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/create/create",
         "iconPath": "images/list_black.png",
         "selectedIconPath": "images/list.png",
         "text": "创建"
