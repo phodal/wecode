@@ -5,7 +5,7 @@ const WxParse = require('../../wxParse/wxParse.js');
 Page({
   data: {
     htmlCode: '',
-    height: 20,
+    height: app.globalData.screenHeight,
     focus: false,
     value: 'console.log("Phodal")'
   },

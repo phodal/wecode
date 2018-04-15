@@ -4,7 +4,7 @@
   <view class="weui-cell">
     <view class="weui-cell__bd">
       <form bindsubmit="bindFormSubmit">
-        <textarea class="weui-textarea" name="textarea" value="{{value}}" auto-height focus placeholder-style="color:gray" cursor-spacing="0" fixed />
+        <textarea class="weui-textarea" style="height: {{height}}px" name="textarea" value="{{value}}" auto-height focus placeholder-style="color:gray" cursor-spacing="0" fixed />
         <view class="weui-footer  weui-footer_fixed-bottom">
           <button form-type="submit"> 创建 </button>
         </view>

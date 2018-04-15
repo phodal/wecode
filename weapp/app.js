@@ -1,6 +1,7 @@
 //app.js
 App({
   globalData: {
+    screenHeight: null,
     openid: null,
     userInfo: null
   },
@@ -30,6 +31,12 @@ App({
         }
       }
     })
+    // 设备信息
+    wx.getSystemInfo({
+      success: res => {
+        this.globalData.screenHeight = res.screenHeight;
+      }
+    });
     // 获取用户信息
     wx.getSetting({
       success: res => {
