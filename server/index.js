@@ -47,7 +47,7 @@ const base_page = `
       $('#input').on('input keydown', updateOutput);
       $('#create').click(function() {
         $.post('/', {
-          id: 'user',
+          user_id: 'user',
           code: getCode()
         })
           .done(function (msg) {

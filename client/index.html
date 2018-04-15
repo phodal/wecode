@@ -46,7 +46,7 @@
       $('#input').on('input keydown', updateOutput);
       $('#create').click(function() {
         $.post('https://code.wdsm.io/', {
-          id: 'user',
+          user_id: 'user',
           code: getCode()
         })
           .done(function (msg) {
