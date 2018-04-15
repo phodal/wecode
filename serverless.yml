@@ -39,6 +39,7 @@ functions:
       - http:
           path: /
           method: post
+          cors: true
 
 resources:
   Resources:

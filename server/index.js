@@ -46,9 +46,14 @@ const base_page = `
 
       $('#input').on('input keydown', updateOutput);
       $('#create').click(function() {
-        $.post('/', {
-          user_id: 'user',
-          code: getCode()
+        $.ajax({
+          url: 'https://code.wdsm.io/',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            user_id: 'user',
+            code: getCode()
+          })
         })
           .done(function (msg) {
             console.log(msg)

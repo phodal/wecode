@@ -11,8 +11,22 @@ const tableName = process.env.DYNAMODB_TABLE;
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 module.exports.create = (event, context, callback) => {
-  const userId = event.body.user_id;
-  const code = event.body.code;
+  let body;
+  try {
+      body = JSON.parse(event.body);
+  } catch (error) {
+    callback(
+      null,
+      {
+        statusCode: 400,
+        body: JSON.stringify(error)
+      }
+    );
+  }
+  const userId = body.user_id;
+  const code = body.code;
+
+  console.log(body)
 
   if (!userId || !code) {
     callback(
@@ -35,6 +49,8 @@ module.exports.create = (event, context, callback) => {
     }
   };
 
+  console.log(params)
+
   docClient.put(params, (error) => {
     if (error) {
       console.error(error);
@@ -48,9 +64,9 @@ module.exports.create = (event, context, callback) => {
 
     const response = {
       statusCode: 201,
-      // headers: {
-      //   "Access-Control-Allow-Origin" : "*" // Required for CORS support to work
-      // },
+      headers: {
+        "Access-Control-Allow-Origin" : "*" // Required for CORS support to work
+      },
       body: JSON.stringify(params.Item),
     };
     callback(null, response);
