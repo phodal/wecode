@@ -6,6 +6,9 @@ Page({
     pageTitle: null,
     id: null
   },
+  unEntity: function (str) {
+    return str.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+  },
   requestCode: function (options) {
     var that = this;
     wx.request({
@@ -33,11 +36,11 @@ Page({
       pageTitle: title
     })
     wx.setNavigationBarTitle({
-      title: title ,
-      success:function(){
+      title: title,
+      success: function () {
 
       },
-      complete:function(){
+      complete: function () {
 
       }
     });
@@ -55,7 +58,7 @@ Page({
     try {
       var current_code = wx.getStorageSync('current_code');
       current_code = JSON.parse(current_code);
-      console.log(current_code.id,options.rowId)
+      console.log(current_code.id, options.rowId)
       if (current_code && current_code.id === options.rowId) {
         WxParse.wxParse('article', 'html', current_code.code, that, 5);
         this.setPageTitle(current_code.title)
@@ -92,10 +95,10 @@ Page({
     return {
       title: '今日代码：' + this.data.pageTitle,
       path: '/pages/code/code?rowId=' + this.data.id,
-      success: function(res) {
+      success: function (res) {
         // 转发成功
       },
-      fail: function(res) {
+      fail: function (res) {
         // 转发失败
       }
     }

@@ -89,18 +89,5 @@ function codeToHtml(code) {
     }
   });
 
-  var tagsToReplace = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;'
-  };
-
-  function replaceTag(tag) {
-    return tagsToReplace[tag] || tag;
-  }
-  function safe_tags_replace(str) {
-    return str.replace(/[&<>]/g, replaceTag);
-  }
-
-  return marked(safe_tags_replace(code));
+  return marked(code);
 }
