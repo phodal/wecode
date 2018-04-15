@@ -1,5 +1,3 @@
-<import src="../../wxParse/wxParse.wxml"/>
-
 <view class="weui-cells weui-cells_after-title">
   <view class="weui-cell">
     <view class="weui-cell__bd">
@@ -13,6 +11,3 @@
   </view>
 </view>
 
-<view class="results">
-  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
-</view>

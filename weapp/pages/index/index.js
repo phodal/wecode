@@ -56,14 +56,13 @@ Page({
     })
   },
   onItemClick: function (e) {
-    let id = e.currentTarget.dataset.rowId;
-    wx.setStorage({
-      key: "current_code",
-      data: this.data.codes[id]
+    let rowId = e.currentTarget.dataset.rowId;
+    let id = e.currentTarget.dataset.id;
+    console.log(this.data.codes, id, rowId)
+    wx.setStorageSync( "current_code", JSON.stringify(this.data.codes[id]))
+    wx.navigateTo({
+      url: '/pages/code/code?rowId=' + rowId
     })
-    // wx.navigateTo({
-    //   url: `/pages/code/${code}`
-    // })
   },
   getFeaturesCode: function () {
     var that = this;

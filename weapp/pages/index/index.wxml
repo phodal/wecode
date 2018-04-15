@@ -1,7 +1,7 @@
 <view class="page__bd">
   <view class="weui-cells__title">首页推荐</view>
   <view class="weui-cells" wx:for="{{codes}}" wx:key="idx" wx:for-index="idx">
-    <view class="weui-cell weui-cell_access weui-cell__hd" data-row-id="{{idx}}" bindtap="onItemClick">
+    <view class="weui-cell weui-cell_access weui-cell__hd" data-id="{{idx}}" data-row-id="{{codes[idx].id}}" bindtap="onItemClick">
       <view class="weui-cell__bd">
         <view>{{item.title}}</view>
       </view>
