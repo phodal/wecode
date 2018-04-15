@@ -33,6 +33,12 @@ functions:
       - http:
           path: /
           method: get
+  features:
+    handler: server/features.handler
+    events:
+      - http:
+          path: /features
+          method: get
   create:
     handler: server/create.create
     events:
