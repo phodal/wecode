@@ -76,6 +76,9 @@ Page({
         that.setData({
           codes: res.data
         })
+      },
+      complete: function () {
+        wx.stopPullDownRefresh();
       }
     })
   }

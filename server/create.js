@@ -25,6 +25,7 @@ module.exports.create = (event, context, callback) => {
     );
   }
   const userId = body.user_id;
+  const title = body.title;
   const code = body.code;
 
   console.log(body)
@@ -43,6 +44,7 @@ module.exports.create = (event, context, callback) => {
   const params = {
     TableName: tableName,
     Item: {
+      title: title,
       id: shortid.generate(),
       userId: userId,
       code: codeToHtml(code),
