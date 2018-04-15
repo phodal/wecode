@@ -15,6 +15,12 @@ App({
             url: 'https://code.wdsm.io/login',
             data: {
               code: res.code
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function(res) {
+              console.log(res.data)
             }
           })
         } else {

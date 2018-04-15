@@ -2,7 +2,8 @@ const request = require('request');
 const weappConfnig = require('../config');
 
 module.exports.login = (event, context, callback) => {
-  let JSCODE = event.queryStringParameters;
+  console.log(event.queryStringParameters)
+  let JSCODE = event.queryStringParameters.code;
 
   const APPID = weappConfnig.app_id;
   const SECRET = weappConfnig.app_secret;

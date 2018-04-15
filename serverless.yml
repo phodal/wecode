@@ -44,7 +44,7 @@ functions:
     handler: server/login.login
     events:
       - http:
-          path: /
+          path: /login
           method: get
           cors: true
 
