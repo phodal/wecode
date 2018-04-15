@@ -24,7 +24,7 @@ Page({
       method: 'POST',
       data: {
         user_id: app.globalData.openid,
-        code: e.detail.value.textarea
+        code: '```\n' + e.detail.value.textarea + '\n```'
       },
       header: {
         'content-type': 'application/json'
