@@ -4,13 +4,13 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    codes: [],
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
@@ -21,7 +21,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -42,13 +42,42 @@ Page({
         }
       })
     }
+    this.getFeaturesCode();
   },
-  getUserInfo: function(e) {
+  onPullDownRefresh: function () {
+    this.getFeaturesCode();
+  },
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  onItemClick: function (e) {
+    let id = e.currentTarget.dataset.rowId;
+    wx.setStorage({
+      key: "current_code",
+      data: this.data.codes[id]
+    })
+    // wx.navigateTo({
+    //   url: `/pages/code/${code}`
+    // })
+  },
+  getFeaturesCode: function () {
+    var that = this;
+    wx.request({
+      url: 'https://code.wdsm.io/features',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        that.setData({
+          codes: res.data
+        })
+      }
     })
   }
 })

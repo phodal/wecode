@@ -36,6 +36,5 @@ Page({
         WxParse.wxParse('article', 'html', data, that, 5);
       }
     })
-
   }
 })

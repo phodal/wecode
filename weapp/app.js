@@ -22,7 +22,6 @@ App({
               'content-type': 'application/json'
             },
             success: function(res) {
-              console.log(res, that.globalData)
               that.globalData.openid = res.data.openid;
             }
           })

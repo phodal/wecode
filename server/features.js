@@ -1,5 +1,6 @@
 const featuresCode = [{
   'title': 'Ajax',
+  'id': '1',
   'code': `$.ajax({ 
     url: 'https://api.github.com/authorizations',
     type: 'POST',
@@ -12,6 +13,7 @@ const featuresCode = [{
 });`
 }, {
   'title': '平方根倒数速算法',
+  'id': '2',
   'code': `float Q_rsqrt( float number )
 {
 	long i;
