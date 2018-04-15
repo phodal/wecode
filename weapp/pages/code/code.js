@@ -19,8 +19,8 @@ Page({
         if (!res.data[0] || !res.data[0].code) {
           return;
         }
-        this.setPageTitle(res.data[0].title)
-        let data = res.data.code[0];
+        that.setPageTitle(res.data[0].title)
+        let data = res.data[0].code;
         WxParse.wxParse('article', 'html', data, that, 5);
       }
     })
