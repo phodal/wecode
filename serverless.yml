@@ -53,6 +53,18 @@ functions:
           path: /login
           method: get
           cors: true
+  userCode:
+    handler: server/code.list
+    events:
+      - http:
+          path: user/{userId}
+          method: get
+  code:
+    handler: server/code.detail
+    events:
+      - http:
+          path: code/{codeId}
+          method: get
 
 resources:
   Resources:
