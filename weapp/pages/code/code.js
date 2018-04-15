@@ -4,6 +4,7 @@ const WxParse = require('../../wxParse/wxParse.js');
 Page({
   data: {
     pageTitle: null,
+    data: null,
     id: null
   },
   unEntity: function (str) {
@@ -25,6 +26,9 @@ Page({
         that.setPageTitle(res.data[0].title)
         let data = res.data[0].code;
         WxParse.wxParse('article', 'html', data, that, 5);
+        this.setData({
+          data: data
+        })
       }
     })
   },
@@ -58,10 +62,12 @@ Page({
     try {
       var current_code = wx.getStorageSync('current_code');
       current_code = JSON.parse(current_code);
-      console.log(current_code.id, options.rowId)
       if (current_code && current_code.id === options.rowId) {
         WxParse.wxParse('article', 'html', current_code.code, that, 5);
         this.setPageTitle(current_code.title)
+        this.setData({
+          data: current_code
+        })
       } else {
         this.requestCode(options);
       }

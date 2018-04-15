@@ -1,5 +1,5 @@
 <import src="../../wxParse/wxParse.wxml"/>
-
+<view class="weui-cells__title">创建时间：{{data.createdAt}}</view>
 <view class="results">
   <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
 </view>
