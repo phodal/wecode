@@ -22,7 +22,7 @@
     "marked": "^0.3.19",
     "request": "^2.85.0",
     "shortid": "^2.2.8",
-    "text-censor": "^1.0.2"
+    "text-censor": "./text-censor"
   },
   "devDependencies": {
     "serverless-domain-manager": "^2.3.6"
