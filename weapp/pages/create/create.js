@@ -32,7 +32,7 @@ Page({
       },
       success: function (res) {
         console.log(res)
-        let data = res.data.code.replace('<pre><code>', '').replace('</code></pre>', '');
+        let data = res.data.code.replace('<pre><code>', '<pre>').replace('</code></pre>', '</pre>');
         WxParse.wxParse('article', 'html', data, that, 5);
       }
     })
