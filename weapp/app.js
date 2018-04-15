@@ -8,8 +8,18 @@ App({
 
     // 登录
     wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      success: function(res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'https://code.wdsm.io/login',
+            data: {
+              code: res.code
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
       }
     })
     // 获取用户信息

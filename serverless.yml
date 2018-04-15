@@ -40,6 +40,13 @@ functions:
           path: /
           method: post
           cors: true
+  login:
+    handler: server/login.login
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true
 
 resources:
   Resources:

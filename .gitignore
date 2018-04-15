@@ -63,3 +63,4 @@ jspm_packages
 
 # Serverless directories
 .serverless
+config.json
