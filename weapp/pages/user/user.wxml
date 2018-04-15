@@ -1,2 +1,10 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="page__bd">
+  <view class="weui-cells" wx:for="{{codes}}" wx:key="idx" wx:for-index="idx">
+    <view class="weui-cell weui-cell_access weui-cell__hd" data-id="{{idx}}" data-row-id="{{codes[idx].id}}" bindtap="onItemClick">
+      <view class="weui-cell__bd">
+        <view>{{item.title}}</view>
+      </view>
+      <view class="weui-cell__ft">详情</view>
+    </view>
+  </view>
+</view>
