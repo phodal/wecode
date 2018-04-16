@@ -119,10 +119,13 @@ Page({
       }
     }
   },
+  getCode: function (that) {
+    return JSON.stringify(that.data.data.code).replace(/<(.|\n)*?>/g, '');
+  },
   copyCode: function () {
     var that = this;
     wx.setClipboardData({
-      data: JSON.stringify(that.data.data.code),
+      data: that.getCode(that),
       success: function(res) {
         wx.getClipboardData({
           success: function(res) {
@@ -131,7 +134,7 @@ Page({
               icon: 'success',
               duration: 2000
             })
-            console.log(that.data.data.code) // data
+            console.log(that.getCode(that)) // data
           }
         })
       }
