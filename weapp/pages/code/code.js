@@ -140,7 +140,7 @@ Page({
   forkCode: function() {
     console.log('forkCode')
     wx.setStorageSync("draft_code", JSON.stringify(this.data.data));
-    wx.navigateTo({
+    wx.switchTab({
       url: '/pages/create/create'
     })
   },

@@ -6,12 +6,7 @@
 </view>
 
 <view class="weui-footer weui-footer_fixed-bottom">
-  <block wx:if="{{isCurrent}}">
-    <button class="weui-btn mini-btn" bindtap="forkCode" size="mini" type="primary"> 修改 </button>
-  </block>
-  <block wx:if="{{!isCurrent}}">
-    <button class="weui-btn mini-btn" bindtap="forkCode" size="mini" type="primary"> Fork </button>
-  </block>
+  <button class="weui-btn mini-btn" bindtap="forkCode" size="mini" type="primary"> 修改 </button>
   <block wx:if="{{isCurrent}}">
     <button bindtap="deleteCode" class="weui-btn mini-btn" size="mini" type="warn"> 刪除 </button>
   </block>

@@ -5,12 +5,19 @@ const WxParse = require('../../wxParse/wxParse.js');
 Page({
   data: {
     htmlCode: '',
+    originCode: '',
     height: app.globalData.screenHeight,
     title: '',
     focus: false,
     value: ''
   },
-  onLoad: function () {
+  clearCode: function (draft_code) {
+    let removeTag = JSON.stringify(draft_code.code).replace(/<(.|\n)*?>/g, '');
+    let removeFirstLast = removeTag.slice(1, -1)
+    let result = removeFirstLast.replace(/\\n/g, '\n');
+    console.log(result)
+    return result;
+  }, onLoad: function () {
     try {
       var draft_code = wx.getStorageSync('draft_code');
       if (draft_code) {
@@ -20,7 +27,9 @@ Page({
             title: draft_code.title
           });
         }
-        e.detail.value = draft_code.code;
+        this.setData({
+          originCode: this.clearCode(draft_code)
+        })
       }
     } catch (e) {
       // Do something when catch error
