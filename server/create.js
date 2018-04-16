@@ -4,7 +4,7 @@ const AWS = require('aws-sdk');
 const hljs = require('highlight.js');
 const marked = require('marked');
 const shortid = require('shortid');
-const tc = require('text-censor')
+const tc = require('./text-censor')
 
 AWS.config.setPromisesDependency(Promise);
 
