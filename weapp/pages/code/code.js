@@ -118,5 +118,17 @@ Page({
         // 转发失败
       }
     }
+  },
+  copyCode: function () {
+    wx.setClipboardData({
+      data: 'data',
+      success: function(res) {
+        wx.getClipboardData({
+          success: function(res) {
+            console.log(this.data.code) // data
+          }
+        })
+      }
+    })
   }
 })
