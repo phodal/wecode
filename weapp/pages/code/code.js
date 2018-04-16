@@ -145,11 +145,17 @@ Page({
     })
   },
   deleteCode: function() {
-    wx.showToast({
+    wx.showModal({
       title: '功能开发中，敬请期待',
-      icon: 'success',
-      duration: 2000
-    })
+      content: '或者，你可以给我们 Pull Request',
+      success: function(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    });
   },
   copyCode: function () {
     var that = this;

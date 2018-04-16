@@ -13,6 +13,6 @@
     <button class="weui-btn mini-btn" bindtap="forkCode" size="mini" type="primary"> Fork </button>
   </block>
   <block wx:if="{{isCurrent}}">
-    <button class="weui-btn mini-btn" size="mini" type="warn"> 刪除 </button>
+    <button bindtap="deleteCode" class="weui-btn mini-btn" size="mini" type="warn"> 刪除 </button>
   </block>
 </view>
