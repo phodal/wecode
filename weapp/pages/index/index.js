@@ -26,7 +26,7 @@ Page({
     var that = this;
     this.setData({
       isLoading: true
-    })
+    });
     wx.request({
       url: 'https://code.wdsm.io/features',
       method: 'GET',

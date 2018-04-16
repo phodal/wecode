@@ -9,7 +9,8 @@ Page({
     id: null,
     time: null,
     openid: null,
-    isCurrent: false
+    isCurrent: false,
+    isLoading: false
   },
   setTime: function(t) {
     this.isCurrentUser();
@@ -22,6 +23,9 @@ Page({
   },
   requestCode: function (options) {
     var that = this;
+    this.setData({
+      isLoading: true
+    });
     wx.request({
       url: `https://code.wdsm.io/code/${options.rowId}`,
       method: 'GET',
@@ -37,6 +41,7 @@ Page({
         let data = res.data[0].code;
         WxParse.wxParse('article', 'html', data, that, 5);
         that.setData({
+          isLoading: false,
           data: res.data[0]
         });
         that.setTime(data);

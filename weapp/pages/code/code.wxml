@@ -12,3 +12,7 @@
   </block>
   <view>@Phodal</view>
 </view>
+
+<loading hidden="{{!isLoading}}">
+  加载中...
+</loading>
