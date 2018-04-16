@@ -1,12 +1,12 @@
 <import src="../../wxParse/wxParse.wxml"/>
 <view class="weui-cells__title" wx:if="{{time}}">创建时间：{{time}}</view>
 <view class="weui-cells__title" size="mini">（点击复制文本）</view>
-<view class="results"  bindtap="copyCode">
+<view class="results" bindtap="copyCode">
   <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
 </view>
 
 <view class="weui-footer weui-footer_fixed-bottom">
-  <button class="weui-btn mini-btn" size="mini" type="primary"> 修改 </button>
+  <button class="weui-btn mini-btn" bindtap="forkCode" size="mini" type="primary"> 修改 </button>
   <block wx:if="{{isCurrent}}">
     <button class="weui-btn mini-btn" size="mini" type="warn"> 刪除 </button>
   </block>

@@ -10,6 +10,19 @@ Page({
     focus: false,
     value: ''
   },
+  onLoad: function () {
+    try {
+      var draft_code = wx.getStorageSync('draft_code');
+      if (draft_code) {
+        this.setData({
+          title: draft_code.title
+        })
+        e.detail.value = draft_code.code;
+      }
+    } catch (e) {
+      // Do something when catch error
+    }
+  },
   bindButtonTap: function () {
     this.setData({
       focus: true
@@ -18,7 +31,7 @@ Page({
   bindTextAreaBlur: function (e) {
     console.log(e.detail.value)
   },
-  bindKeyInput: function(e) {
+  bindKeyInput: function (e) {
     console.log(e);
     this.setData({
       title: e.detail.value
@@ -32,7 +45,7 @@ Page({
       return wx.showModal({
         title: '提示',
         content: '请填写标题或者代码',
-        success: function(res) {
+        success: function (res) {
 
         }
       })
@@ -52,11 +65,12 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
+        wx.removeStorageSync("draft_code");
         wx.navigateTo({
           url: '/pages/code/code?rowId=' + res.data.id
         })
       },
-      fail: function(error) {
+      fail: function (error) {
         return wx.showModal({
           title: '创建失败',
           content: JSON.stringify(error)

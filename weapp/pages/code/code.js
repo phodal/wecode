@@ -137,6 +137,20 @@ Page({
       })
     }
   },
+  forkCode: function() {
+    console.log('forkCode')
+    wx.setStorageSync("draft_code", JSON.stringify(this.data.data))
+    wx.navigateTo({
+      url: '/pages/create/create'
+    })
+  },
+  deleteCode: function() {
+    wx.showToast({
+      title: '功能开发中，敬请期待',
+      icon: 'success',
+      duration: 2000
+    })
+  },
   copyCode: function () {
     var that = this;
     wx.setClipboardData({
