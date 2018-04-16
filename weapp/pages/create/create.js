@@ -11,11 +11,17 @@ Page({
     focus: false,
     value: ''
   },
+  unEntity: function(str){
+    return str.replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/\\"/g, '"')
+      .replace(/&gt;/g, ">");
+  },
   clearCode: function (draft_code) {
     let removeTag = JSON.stringify(draft_code.code).replace(/<(.|\n)*?>/g, '');
     let removeFirstLast = removeTag.slice(1, -1)
     let result = removeFirstLast.replace(/\\n/g, '\n');
-    return result;
+    return this.unEntity(result);
   },
   onShow: function () {
     try {
