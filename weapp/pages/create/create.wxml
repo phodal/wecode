@@ -12,7 +12,7 @@
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell">
       <view class="weui-cell__bd">
-        <textarea required class="weui-textarea" auto-height maxlength="-1" name="textarea" value="{{originCode}}" placeholder-style="color:gray" cursor-spacing="0" fixed />
+        <textarea class="weui-textarea" auto-height maxlength="-1" name="textarea" value="{{originCode}}" placeholder-style="color:gray" cursor-spacing="0" />
       </view>
     </view>
   </view>
