@@ -1,11 +1,19 @@
 const app = getApp()
 const WxParse = require('../../wxParse/wxParse.js');
+const util = require('../../utils/util.js');
 
 Page({
   data: {
     pageTitle: null,
     data: null,
-    id: null
+    id: null,
+    time: null,
+  },
+  setTime: function(t) {
+    console.log(t.createdAt)
+    this.setData({
+      time: util.formatTime(new Date(t.createdAt))
+    })
   },
   unEntity: function (str) {
     return str.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
@@ -26,9 +34,10 @@ Page({
         that.setPageTitle(res.data[0].title)
         let data = res.data[0].code;
         WxParse.wxParse('article', 'html', data, that, 5);
-        this.setData({
+        that.setData({
           data: data
-        })
+        });
+        that.setTime(data);
       }
     })
   },
@@ -68,6 +77,7 @@ Page({
         this.setData({
           data: current_code
         })
+        this.setTime(current_code);
       } else {
         this.requestCode(options);
       }
