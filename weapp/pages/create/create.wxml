@@ -1,25 +1,21 @@
 <form bindsubmit="bindFormSubmit">
-  <view class="weui-cell weui-cell_input">
-    <view class="weui-cell__hd">
-      <view class="weui-label">代码标题</view>
-    </view>
-    <view class="weui-cell__bd">
-      <input class="weui-input" bindinput="bindKeyInput" maxlength="40" type="text" value="{{title}}" placeholder="xx 算法" />
-    </view>
-  </view>
-  <view class="weui-cells__title create-title">代码</view>
-
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
+  <view class="container">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">代码标题</view>
+      </view>
       <view class="weui-cell__bd">
-        <textarea class="weui-textarea" auto-height maxlength="-1" name="textarea" value="{{originCode}}" placeholder-style="color:gray" cursor-spacing="0" />
+        <input class="weui-input" bindinput="bindKeyInput" maxlength="40" type="text" value="{{title}}" placeholder="xx 算法" />
       </view>
     </view>
-  </view>
-  <view class="weui-footer weui-footer_fixed-bottom">
-    <button class="weui-btn" type="primary" form-type="submit"> 创建 </button>
-  </view>
-  <view bindtap="emptyTextArea" class="post">
-    <icon type="clear" color="#f53d3d" size="25" />
+    <view class="create-title">代码</view>
+
+    <view class='row' class="weui-cell__bd" id="textareawrap">
+      <textarea style="height:{{height}}" class="text" maxlength="-1" name="textarea" value="{{originCode}}" placeholder="hello, world!" placeholder-style="color:gray" cursor-spacing="0" />
+    </view>
+    <view class='bottom'>
+      <button formType="submit" class='btn success'>创建</button>
+      <button class='btn del' bindtap="emptyTextArea">清空</button>
+    </view>
   </view>
 </form>

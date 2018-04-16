@@ -9,9 +9,21 @@ Page({
     height: app.globalData.screenHeight,
     title: '',
     focus: false,
-    value: ''
+    value: '',
+    height: '' //data里面增加height属性
   },
   onShow: function () {
+    var that = this;
+
+    let id = "#textareawrap";
+    let query = wx.createSelectorQuery();//创建查询对象
+    query.select(id).boundingClientRect();//获取view的边界及位置信息
+    query.exec(function (res) {
+      that.setData({
+        height: res[0].height + "px"
+      });
+    });
+
     try {
       var draft_code = wx.getStorageSync('draft_code');
       if (draft_code) {

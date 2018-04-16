@@ -12,7 +12,7 @@ Page({
     isCurrent: false,
     isLoading: false
   },
-  setTime: function(t) {
+  setTime: function (t) {
     this.isCurrentUser();
     this.setData({
       time: new Date(t.createdAt)
@@ -142,18 +142,18 @@ Page({
       })
     }
   },
-  forkCode: function() {
+  forkCode: function () {
     console.log('forkCode')
     wx.setStorageSync("draft_code", JSON.stringify(this.data.data));
     wx.switchTab({
       url: '/pages/create/create'
     })
   },
-  deleteCode: function() {
+  deleteCode: function () {
     wx.showModal({
       title: '功能开发中，敬请期待',
       content: '或者，你可以给我们 Pull Request',
-      success: function(res) {
+      success: function (res) {
         if (res.confirm) {
           console.log('用户点击确定')
         } else if (res.cancel) {
@@ -166,9 +166,9 @@ Page({
     var that = this;
     wx.setClipboardData({
       data: that.getCode(that),
-      success: function(res) {
+      success: function (res) {
         wx.getClipboardData({
-          success: function(res) {
+          success: function (res) {
             wx.showToast({
               title: '复制成功',
               icon: 'success',
