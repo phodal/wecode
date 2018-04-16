@@ -1,2 +1,17 @@
-<!--pages/about/about.wxml-->
-<text>pages/about/about.wxml</text>
+<view class="page__bd">
+  <view class="weui-cells__title">关于</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">作者</view>
+      <view class="weui-cell__ft">Phodal</view>
+    </view>
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="copyWechat">
+      <view class="weui-cell__bd">微信公众号</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">phodal-weixin</view>
+    </view>
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">代码</view>
+      <view class="weui-cell__ft">github.com/phodal/code</view>
+    </view>
+  </view>
+</view>
