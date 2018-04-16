@@ -14,6 +14,7 @@ Page({
     try {
       var draft_code = wx.getStorageSync('draft_code');
       if (draft_code) {
+        draft_code = JSON.parse(draft_code);
         this.setData({
           title: draft_code.title
         })
@@ -40,7 +41,7 @@ Page({
   bindFormSubmit: function (e) {
     var that = this;
     //发起网络请求
-    console.log(this.data.title, e.detail.value.textarea)
+    console.log(this.data.title, e.detail.value.textarea);
     if (!this.data.title || !e.detail.value.textarea) {
       return wx.showModal({
         title: '提示',
@@ -82,4 +83,4 @@ Page({
       }
     })
   }
-})
+});
