@@ -120,12 +120,18 @@ Page({
     }
   },
   copyCode: function () {
+    var that = this;
     wx.setClipboardData({
-      data: 'data',
+      data: JSON.stringify(that.data.data.code),
       success: function(res) {
         wx.getClipboardData({
           success: function(res) {
-            console.log(this.data.code) // data
+            wx.showToast({
+              title: '复制成功',
+              icon: 'success',
+              duration: 2000
+            })
+            console.log(that.data.data.code) // data
           }
         })
       }
