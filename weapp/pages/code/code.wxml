@@ -3,3 +3,8 @@
 <view class="results">
   <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
 </view>
+
+<view class="weui-footer weui-footer_fixed-bottom">
+  <button class="weui-btn mini-btn" size="mini" type="primary"> 修改 </button>
+  <button class="weui-btn mini-btn" size="mini" type="warn"> 刪除 </button>
+</view>

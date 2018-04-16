@@ -12,7 +12,7 @@ Page({
   setTime: function(t) {
     console.log(t.createdAt)
     this.setData({
-      time: util.formatTime(new Date(t.createdAt))
+      time: new Date(t.createdAt)
     })
   },
   unEntity: function (str) {
