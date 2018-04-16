@@ -2,7 +2,6 @@
 @import 'hljs.wxss';
 @import "/wxParse/wxParse.wxss";
 
-
 /**app.wxss**/
 .container {
   height: 100%;
@@ -12,4 +11,14 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
+}
+
+button {
+  line-height: 2.4;
+}
+
+.weui-cell__bd,
+textarea,
+.weui-label {
+  color: #384452;
 }

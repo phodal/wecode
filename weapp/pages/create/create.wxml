@@ -7,7 +7,7 @@
       <input class="weui-input" bindinput="bindKeyInput" maxlength="40" type="text" value="{{title}}" placeholder="xx 算法" />
     </view>
   </view>
-  <view class="weui-cells__title">代码区</view>
+  <view class="weui-cells__title create-title">代码</view>
 
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell">
