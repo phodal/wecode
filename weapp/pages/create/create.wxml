@@ -10,7 +10,7 @@
     </view>
 
     <view class='row' class="weui-cell__bd" id="textareawrap">
-      <textarea style="height:{{height}}" class="text" maxlength="-1" name="textarea" value="{{originCode}}" placeholder="hello, world!" placeholder-style="color:gray" cursor-spacing="0" />
+      <textarea style="height:{{height}}" class="text" maxlength="-1" name="textarea" value="{{originCode}}" placeholder="console.log('hello, world!')" placeholder-style="color:gray" cursor-spacing="0" />
     </view>
     <view class='bottom'>
       <button formType="submit" class='btn success'>创建</button>
