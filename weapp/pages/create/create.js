@@ -15,9 +15,9 @@ Page({
     let removeTag = JSON.stringify(draft_code.code).replace(/<(.|\n)*?>/g, '');
     let removeFirstLast = removeTag.slice(1, -1)
     let result = removeFirstLast.replace(/\\n/g, '\n');
-    console.log(result)
     return result;
-  }, onLoad: function () {
+  },
+  onShow: function () {
     try {
       var draft_code = wx.getStorageSync('draft_code');
       if (draft_code) {
@@ -80,6 +80,10 @@ Page({
         wx.removeStorageSync("draft_code");
         wx.navigateTo({
           url: '/pages/code/code?rowId=' + res.data.id
+        })
+        that.setData({
+          title: '',
+          originCode: ''
         })
       },
       fail: function (error) {
