@@ -45,10 +45,10 @@ page {
 
 .bottom .btn {
   flex: 1;
-  line-height: 2;
+  line-height: 1.8;
   padding-top: 5rpx;
   padding-bottom: 5rpx;
-  margin: 30rpx 30rpx;
+  margin: 25rpx 30rpx;
 }
 
 .btn.success {

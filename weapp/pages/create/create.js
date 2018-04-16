@@ -53,6 +53,7 @@ Page({
     this.setData({
       originCode: ''
     })
+    wx.removeStorageSync("draft_code");
   },
   bindKeyInput: function (e) {
     console.log(e);
