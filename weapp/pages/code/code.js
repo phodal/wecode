@@ -128,7 +128,7 @@ Page({
     }
   },
   getCode: function (that) {
-    return JSON.stringify(that.data.data.code).replace(/<(.|\n)*?>/g, '');
+    return util.clearCode(that.data.data.code);
   },
   isCurrentUser: function () {
     if (this.data.openid) {

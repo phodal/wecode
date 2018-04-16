@@ -14,6 +14,21 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function unEntity(str) {
+  return str.replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/\\"/g, '"')
+    .replace(/\\n/g, '\n')
+    .replace(/&gt;/g, ">");
+}
+
+const clearCode = code => {
+  let removeTag = JSON.stringify(code).replace(/<(.|\n)*?>/g, '');
+  let removeFirstLast = removeTag.slice(1, -1);
+  return unEntity(removeFirstLast);
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  clearCode: clearCode
 }
