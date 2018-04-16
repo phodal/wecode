@@ -4,7 +4,8 @@
     "pages/create/create",
     "pages/logs/logs",
     "pages/code/code",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -20,22 +21,28 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/create/create",
         "iconPath": "images/home_black.png",
         "selectedIconPath": "images/home.png",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/create/create",
-        "iconPath": "images/list_black.png",
-        "selectedIconPath": "images/list.png",
         "text": "创建"
       },
       {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/explore_black.png",
+        "selectedIconPath": "images/explore.png",
+        "text": "发现"
+      },
+      {
         "pagePath": "pages/user/user",
+        "iconPath": "images/list_black.png",
+        "selectedIconPath": "images/list.png",
+        "text": "我的"
+      },
+      {
+        "pagePath": "pages/about/about",
         "iconPath": "images/info_black.png",
         "selectedIconPath": "images/info.png",
-        "text": "我的"
+        "text": "关于"
       }
     ]
   }

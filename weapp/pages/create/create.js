@@ -15,9 +15,11 @@ Page({
       var draft_code = wx.getStorageSync('draft_code');
       if (draft_code) {
         draft_code = JSON.parse(draft_code);
-        this.setData({
-          title: draft_code.title
-        })
+        if (draft_code.title) {
+          this.setData({
+            title: draft_code.title
+          });
+        }
         e.detail.value = draft_code.code;
       }
     } catch (e) {
