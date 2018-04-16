@@ -19,4 +19,7 @@
   <view class="weui-footer weui-footer_fixed-bottom">
     <button class="weui-btn" type="primary" form-type="submit"> 创建 </button>
   </view>
+  <view bindtap="emptyTextArea" class="post">
+    <icon type="clear" color="#f53d3d" size="25" />
+  </view>
 </form>

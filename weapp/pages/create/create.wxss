@@ -10,3 +10,14 @@ button.weui-btn {
 .create-title {
   margin-top: 0;
 }
+
+.post {
+    float: right;
+    background-color: #ffffff;
+    position: fixed;
+    top: 2rem;
+    right: 1rem;
+    border: 0 solid #ffffff;
+    border-radius: 500px;
+    box-shadow: 4px 1px 1px #cccccc;
+}

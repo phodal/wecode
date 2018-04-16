@@ -37,6 +37,11 @@ Page({
   bindTextAreaBlur: function (e) {
     console.log(e.detail.value)
   },
+  emptyTextArea: function (e) {
+    this.setData({
+      originCode: ''
+    })
+  },
   bindKeyInput: function (e) {
     console.log(e);
     this.setData({
