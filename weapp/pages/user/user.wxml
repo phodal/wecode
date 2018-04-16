@@ -5,4 +5,7 @@
       <view class="weui-cell__ft weui-cell__ft_in-access">详情</view>
     </view>
   </view>
+  <loading hidden="{{!isLoading}}">
+    加载中...
+  </loading>
 </view>

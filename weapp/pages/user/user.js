@@ -8,6 +8,7 @@ Page({
     openId: '',
     userInfo: {},
     hasUserInfo: false,
+    isLoading: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onLoad: function () {
@@ -65,6 +66,9 @@ Page({
   getFeaturesCode: function () {
     var that = this;
     var userId = app.globalData.openid;
+    this.setData({
+      isLoading: true
+    })
     wx.request({
       url: `https://code.wdsm.io/user/${userId}`,
       method: 'GET',
@@ -78,6 +82,9 @@ Page({
       },
       complete: function () {
         wx.stopPullDownRefresh();
+        that.setData({
+          isLoading: false
+        })
       }
     })
   }
