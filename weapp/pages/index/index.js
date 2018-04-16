@@ -39,6 +39,7 @@ Page({
         })
       },
       complete: function () {
+        wx.stopPullDownRefresh();
         that.setData({
           isLoading: false
         })
