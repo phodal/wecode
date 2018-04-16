@@ -57,7 +57,6 @@ Page({
   onItemClick: function (e) {
     let rowId = e.currentTarget.dataset.rowId;
     let id = e.currentTarget.dataset.id;
-    console.log(this.data.codes, id, rowId)
     wx.setStorageSync( "current_code", JSON.stringify(this.data.codes[id]))
     wx.navigateTo({
       url: '/pages/code/code?rowId=' + rowId

@@ -8,9 +8,11 @@ Page({
     data: null,
     id: null,
     time: null,
+    openid: null,
+    isCurrent: false
   },
   setTime: function(t) {
-    console.log(t.createdAt)
+    this.isCurrentUser();
     this.setData({
       time: new Date(t.createdAt)
     })
@@ -35,7 +37,7 @@ Page({
         let data = res.data[0].code;
         WxParse.wxParse('article', 'html', data, that, 5);
         that.setData({
-          data: data
+          data: res.data[0]
         });
         that.setTime(data);
       }
@@ -59,6 +61,12 @@ Page({
     });
   },
   onLoad: function (options) {
+    if (app.globalData.openid) {
+      this.setData({
+        openid: app.globalData.openid
+      })
+    }
+
     if (!options.rowId) {
       wx.navigateTo({
         url: '/pages/index/index'
@@ -121,6 +129,13 @@ Page({
   },
   getCode: function (that) {
     return JSON.stringify(that.data.data.code).replace(/<(.|\n)*?>/g, '');
+  },
+  isCurrentUser: function () {
+    if (this.data.openid) {
+      this.setData({
+        isCurrent: this.data.openid === this.data.data.userId
+      })
+    }
   },
   copyCode: function () {
     var that = this;
