@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "代码"
+  "navigationBarTitleText": "代码",
+  "enablePullDownRefresh": false
 }
