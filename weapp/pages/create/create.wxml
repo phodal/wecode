@@ -8,7 +8,6 @@
         <input class="weui-input" bindinput="bindKeyInput" maxlength="40" type="text" value="{{title}}" placeholder="xx 算法" />
       </view>
     </view>
-    <view class="create-title">代码</view>
 
     <view class='row' class="weui-cell__bd" id="textareawrap">
       <textarea style="height:{{height}}" class="text" maxlength="-1" name="textarea" value="{{originCode}}" placeholder="hello, world!" placeholder-style="color:gray" cursor-spacing="0" />

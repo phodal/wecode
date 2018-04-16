@@ -1,6 +1,6 @@
 .create-title {
   color: #384452;
-  margin-left: 2.6em;
+  margin-left: 30px;
   width: 100%;
 }
 
