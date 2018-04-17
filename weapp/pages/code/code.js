@@ -104,7 +104,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '今日代码：' + this.data.pageTitle,
+      title: this.data.pageTitle,
       path: '/pages/code/code?rowId=' + this.data.id,
       success: function (res) {
         // 转发成功

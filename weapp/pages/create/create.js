@@ -157,5 +157,17 @@ Page({
         wx.hideLoading();
       }
     })
+  },
+  onShareAppMessage: function (res) {
+    return {
+      title: '来，一起看看这行代码',
+      path: '/pages/create/create',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 });
