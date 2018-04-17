@@ -67,6 +67,12 @@ functions:
       - http:
           path: code/{codeId}
           method: get
+  updateCode:
+    handler: server/code.update
+    events:
+      - http:
+          path: code/{codeId}
+          method: post
 
 resources:
   Resources:
