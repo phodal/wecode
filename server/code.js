@@ -94,9 +94,9 @@ module.exports.update = (event, context, callback) => {
     },
     ExpressionAttributeValues: {
       ':code': code,
-      '#title': title
+      ':title': title
     },
-    UpdateExpression: 'SET #code = :code, title = :title',
+    UpdateExpression: 'SET #code = :code, #title = :title',
     ReturnValues: 'ALL_NEW',
   };
 
