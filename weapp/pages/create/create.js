@@ -96,7 +96,6 @@ Page({
     wx.removeStorageSync("draft_code");
   },
   bindKeyInput: function (e) {
-    console.log(e);
     this.setData({
       title: e.detail.value
     })
@@ -120,8 +119,6 @@ Page({
     if (this.data.codeId !== '' && this.data.isCurrent) {
       requestUrl = 'https://code.wdsm.io/code/' + this.data.codeId
     }
-
-    console.log(e.detail.value.textarea)
 
     wx.request({
       url: requestUrl,

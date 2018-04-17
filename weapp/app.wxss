@@ -21,3 +21,10 @@ textarea,
 .weui-label {
   color: #384452;
 }
+
+.hljs-attr.wxParse-inline,
+.hljs-string.wxParse-inline,
+.hljs-title.wxParse-inline,
+.hljs-keyword.wxParse-inline {
+  padding-left: 10rpx;
+}
