@@ -88,21 +88,19 @@ module.exports.update = (event, context, callback) => {
       id: codeId
     },
     ExpressionAttributeNames: {
-      '#code': 'code',
-      '#title': 'title'
+      '#s_code': 'code',
+      '#s_title': 'title'
     },
     ExpressionAttributeValues: {
       ':code': code,
       ':title': title
     },
     // ConditionExpression: '#userId = :userId',
-    UpdateExpression: 'SET #code = :code, #title = :title',
+    UpdateExpression: 'SET #s_code = :code, #s_title = :title',
     ReturnValues: 'ALL_NEW',
   };
 
-  // update the todo in the database
   dynamoDb.update(params, (error, result) => {
-    // handle potential errors
     if (error) {
       console.error(error);
       callback(null, {
