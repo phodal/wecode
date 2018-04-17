@@ -121,6 +121,7 @@ Page({
       requestUrl = 'https://code.wdsm.io/code/' + this.data.codeId
     }
 
+    console.log(e.detail.value.textarea)
     wx.request({
       url: requestUrl,
       method: 'POST',

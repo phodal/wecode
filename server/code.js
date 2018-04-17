@@ -78,6 +78,13 @@ module.exports.update = (event, context, callback) => {
   const title = body.title;
   const codeId = event.pathParameters.codeId;
 
+  console.log({
+    codeId: codeId,
+    userId: userId,
+    code: code,
+    title: title
+  });
+
   if (!userId || !code) {
     callback(null, {statusCode: 400, body: '弄什么呢'});
   }
