@@ -6,7 +6,6 @@ Page({
   data: {
     htmlCode: '',
     originCode: '',
-    height: app.globalData.screenHeight,
     title: '',
     focus: false,
     value: '',
