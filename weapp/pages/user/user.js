@@ -42,6 +42,8 @@ Page({
     if (!app.globalData.openid) {
       return;
     }
+  },
+  onShow: function () {
     this.getFeaturesCode();
   },
   onPullDownRefresh: function () {
