@@ -41,12 +41,12 @@ Page({
 
     if (!app.globalData.openid) {
       return;
+    } else {
+      this.getFeaturesCode();
     }
   },
   onShow: function () {
-    if (app.globalData.openid) {
-      this.getFeaturesCode();
-    }
+
   },
   onPullDownRefresh: function () {
     this.getFeaturesCode();
