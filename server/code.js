@@ -130,3 +130,58 @@ module.exports.update = (event, context, callback) => {
     callback(null, response);
   });
 }
+
+module.exports.delete = (event, context, callback) => {
+  let body;
+  try {
+    body = JSON.parse(event.body);
+  } catch (error) {
+    console.log(error)
+    callback(null, {statusCode: 400, body: JSON.stringify(error)});
+  }
+
+  const userId = body.user_id;
+  const code = Utils.codeToHtml(body.code);
+  const title = body.title;
+  const codeId = event.pathParameters.codeId;
+
+  console.log({
+    codeId: codeId,
+    userId: userId,
+    code: code,
+    title: title
+  });
+
+  if (!userId || !code) {
+    callback(null, {statusCode: 400, body: '弄什么呢'});
+  }
+
+  const params = {
+    TableName: tableName,
+    Key: {
+      id: codeId
+    }
+  };
+
+  dynamoDb.delete(params, (error, result) => {
+    if (error) {
+      console.error(error);
+      callback(null, {
+        statusCode: error.statusCode || 501,
+        headers: {'Content-Type': 'text/plain'},
+        body: JSON.stringify({
+          error: 500,
+          message: 'Couldn\'t update item.'
+        }),
+      });
+      return;
+    }
+
+    // create a response
+    const response = {
+      statusCode: 204,
+      body: [],
+    };
+    callback(null, response);
+  });
+}

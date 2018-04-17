@@ -74,6 +74,12 @@ functions:
       - http:
           path: code/{codeId}
           method: post
+  deleteCode:
+    handler: server/code.delete
+    events:
+      - http:
+          path: code/{codeId}
+          method: delete
 
 resources:
   Resources:
