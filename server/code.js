@@ -85,8 +85,7 @@ module.exports.update = (event, context, callback) => {
   const params = {
     TableName: tableName,
     Key: {
-      id: codeId,
-      userId: userId
+      id: codeId
     },
     ExpressionAttributeNames: {
       '#code': 'code',
@@ -96,6 +95,7 @@ module.exports.update = (event, context, callback) => {
       ':code': code,
       ':title': title
     },
+    // ConditionExpression: '#userId = :userId',
     UpdateExpression: 'SET #code = :code, #title = :title',
     ReturnValues: 'ALL_NEW',
   };
