@@ -1,10 +1,9 @@
 'use strict';
 
 const AWS = require('aws-sdk');
-const hljs = require('highlight.js');
-const marked = require('marked');
 const shortid = require('shortid');
 const tc = require('./text-censor')
+const Utils = require('./utils');
 
 AWS.config.setPromisesDependency(Promise);
 
@@ -46,7 +45,7 @@ module.exports.create = (event, context, callback) => {
           title: censoredTitle,
           id: shortid.generate(),
           userId: userId,
-          code: codeToHtml(censoredCode),
+          code: Utils.codeToHtml(censoredCode),
           createdAt: timestamp
         }
       };
@@ -75,19 +74,3 @@ module.exports.create = (event, context, callback) => {
 
   })
 };
-
-function codeToHtml(code) {
-  marked.setOptions({
-    highlight: function (code, lang) {
-      if (typeof lang === 'undefined') {
-        return hljs.highlightAuto(code).value;
-      } else if (lang === 'nohighlight') {
-        return code;
-      } else {
-        return hljs.highlight(lang, code).value;
-      }
-    }
-  });
-
-  return marked(code);
-}

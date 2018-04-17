@@ -122,13 +122,14 @@ Page({
     }
 
     console.log(e.detail.value.textarea)
+
     wx.request({
       url: requestUrl,
       method: 'POST',
       data: {
         title: this.data.title,
         user_id: app.globalData.openid,
-        code: '```\n' + e.detail.value.textarea + '\n```'
+        code: `\`\`\`\n${e.detail.value.textarea}\n\`\`\``
       },
       header: {
         'content-type': 'application/json'

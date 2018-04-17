@@ -1,6 +1,7 @@
 const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const tableName = process.env.DYNAMODB_TABLE;
+const Utils = require('./utils');
 
 module.exports.detail = (event, context, callback) => {
   let codeId = event.pathParameters.codeId;
@@ -18,7 +19,7 @@ module.exports.detail = (event, context, callback) => {
       console.error(error);
       callback(null, {
         statusCode: error.statusCode || 501,
-        headers: { 'Content-Type': 'text/plain' },
+        headers: {'Content-Type': 'text/plain'},
         body: 'couldn\'t fetch the logs.',
       });
       return;
@@ -49,7 +50,7 @@ module.exports.list = (event, context, callback) => {
       console.error(error);
       callback(null, {
         statusCode: error.statusCode || 501,
-        headers: { 'Content-Type': 'text/plain' },
+        headers: {'Content-Type': 'text/plain'},
         body: 'couldn\'t fetch the logs.',
       });
       return;
@@ -74,7 +75,7 @@ module.exports.update = (event, context, callback) => {
   }
 
   const userId = body.user_id;
-  const code = body.code;
+  const code = Utils.codeToHtml(body.code);
   const title = body.title;
   const codeId = event.pathParameters.codeId;
 
@@ -112,7 +113,7 @@ module.exports.update = (event, context, callback) => {
       console.error(error);
       callback(null, {
         statusCode: error.statusCode || 501,
-        headers: { 'Content-Type': 'text/plain' },
+        headers: {'Content-Type': 'text/plain'},
         body: JSON.stringify({
           error: 500,
           message: 'Couldn\'t update item.'
