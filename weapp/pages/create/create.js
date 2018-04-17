@@ -14,14 +14,13 @@ Page({
     isCurrentUser: false,
     height: '' //data里面增加height属性
   },
-  onLoad: function () {
+  onShow: function () {
     if (app.globalData.openid) {
       this.setData({
         openid: app.globalData.openid
       })
     }
-  },
-  onShow: function () {
+
     let that = this;
 
     let id = "#textareawrap";
@@ -75,7 +74,6 @@ Page({
   bindFormSubmit: function (e) {
     var that = this;
     //发起网络请求
-    console.log(this.data.title, e.detail.value.textarea);
     if (!this.data.title || !e.detail.value.textarea) {
       return wx.showModal({
         title: '提示',
@@ -89,9 +87,10 @@ Page({
       title: '创建中',
     })
     let requestUrl = 'https://code.wdsm.io/';
-    if (this.data.codeId && this.data.isCurrent) {
+    if (this.data.codeId !== '' && this.data.isCurrent) {
       requestUrl = 'https://code.wdsm.io/code/' + this.data.codeId
     }
+
     wx.request({
       url: requestUrl,
       method: 'POST',
@@ -104,6 +103,12 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
+        if (!res.data) {
+          return wx.showModal({
+            title: '创建失败',
+            content: JSON.stringify(error)
+          })
+        }
         wx.removeStorageSync("draft_code");
         wx.navigateTo({
           url: '/pages/code/code?rowId=' + res.data.id
@@ -118,7 +123,6 @@ Page({
           title: '创建失败',
           content: JSON.stringify(error)
         })
-
       },
       complete: function () {
         wx.hideLoading();
