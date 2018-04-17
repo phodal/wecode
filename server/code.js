@@ -168,23 +168,31 @@ module.exports.delete = (event, context, callback) => {
     ConditionExpression: '(#userId = :userId)'
   };
 
-  dynamoDb.delete(params, (error) => {
-    if (error) {
-      return callback(null, {
-        statusCode: error.statusCode || 501,
-        headers: {'Content-Type': 'text/plain'},
-        body: JSON.stringify({
-          error: 500,
-          message: JSON.stringify(error)
-        }),
-      });
-    }
+  try {
+    dynamoDb.delete(params, (error) => {
+      if (error) {
+        return callback(null, {
+          statusCode: error.statusCode || 501,
+          headers: {'Content-Type': 'text/plain'},
+          body: JSON.stringify({
+            error: 500,
+            message: JSON.stringify(error)
+          }),
+        });
+      }
 
-    // create a response
+      const response = {
+        statusCode: 204,
+        body: [],
+      };
+      return callback(null, response);
+    })
+  } catch (error) {
+    console.log(error);
     const response = {
-      statusCode: 204,
-      body: [],
+      statusCode: 500,
+      body: JSON.stringify(error),
     };
     return callback(null, response);
-  });
+  }
 }
