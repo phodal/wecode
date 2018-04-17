@@ -86,8 +86,8 @@ module.exports.update = (event, context, callback) => {
     title: title
   });
 
-  if (!userId || !code) {
-    callback(null, {statusCode: 400, body: '弄什么呢'});
+  if (!userId || !code || !codeId || !title) {
+    return callback(null, {statusCode: 400, body: '弄什么呢'});
   }
 
   const params = {
@@ -131,7 +131,7 @@ module.exports.update = (event, context, callback) => {
     };
     callback(null, response);
   });
-}
+};
 
 module.exports.delete = (event, context, callback) => {
   let body;
@@ -150,7 +150,7 @@ module.exports.delete = (event, context, callback) => {
     userId: userId
   });
 
-  if (!userId) {
+  if (!userId || !codeId) {
     callback(null, {statusCode: 400, body: '弄什么呢'});
   }
 
@@ -168,19 +168,16 @@ module.exports.delete = (event, context, callback) => {
     ConditionExpression: '(#userId = :userId)'
   };
 
-  dynamoDb.delete(params, (error, result) => {
+  dynamoDb.delete(params, (error) => {
     if (error) {
-      console.error(error);
-      callback(null, {
+      return callback(null, {
         statusCode: error.statusCode || 501,
         headers: {'Content-Type': 'text/plain'},
         body: JSON.stringify({
           error: 500,
-          message: JSON.stringify(error),
-          result: result
+          message: JSON.stringify(error)
         }),
       });
-      return;
     }
 
     // create a response
@@ -188,6 +185,6 @@ module.exports.delete = (event, context, callback) => {
       statusCode: 204,
       body: [],
     };
-    callback(null, response);
+    return callback(null, response);
   });
 }
