@@ -44,7 +44,9 @@ Page({
     }
   },
   onShow: function () {
-    this.getFeaturesCode();
+    if (app.globalData.openid) {
+      this.getFeaturesCode();
+    }
   },
   onPullDownRefresh: function () {
     this.getFeaturesCode();

@@ -141,18 +141,14 @@ module.exports.delete = (event, context, callback) => {
   }
 
   const userId = body.user_id;
-  const code = Utils.codeToHtml(body.code);
-  const title = body.title;
   const codeId = event.pathParameters.codeId;
 
   console.log({
     codeId: codeId,
-    userId: userId,
-    code: code,
-    title: title
+    userId: userId
   });
 
-  if (!userId || !code) {
+  if (!userId) {
     callback(null, {statusCode: 400, body: '弄什么呢'});
   }
 
@@ -171,7 +167,7 @@ module.exports.delete = (event, context, callback) => {
         headers: {'Content-Type': 'text/plain'},
         body: JSON.stringify({
           error: 500,
-          message: 'Couldn\'t update item.'
+          message: 'couldn\'t delete item.'
         }),
       });
       return;

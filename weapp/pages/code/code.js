@@ -99,24 +99,6 @@ Page({
     }
 
   },
-  onReady: function () {
-
-  },
-  onShow: function () {
-
-  },
-  onHide: function () {
-
-  },
-  onUnload: function () {
-
-  },
-  onPullDownRefresh: function () {
-
-  },
-  onReachBottom: function () {
-
-  },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       console.log(res.target)
@@ -149,15 +131,27 @@ Page({
     })
   },
   deleteCode: function () {
-    wx.showModal({
-      title: '功能开发中，敬请期待',
-      content: '或者，你可以给我们 Pull Request',
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
+    wx.showLoading({
+      title: '刪除中',
+    })
+    wx.request({
+      url: `https://code.wdsm.io/code/${this.data.id}`,
+      method: 'DELETE',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        user_id: app.globalData.openid
+      },
+      success: function () {
+        wx.hideLoading();
+        wx.navigateBack();
+      },
+      fail: function (error) {
+        wx.showModal({
+          title: '创建失败',
+          content: JSON.stringify(error)
+        })
       }
     });
   },
