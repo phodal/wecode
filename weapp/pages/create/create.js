@@ -17,11 +17,17 @@ Page({
   onShow: function () {
     let that = this;
 
+    let openid = wx.getStorageSync('openid');
     if (app.globalData.openid) {
       this.setData({
         openid: app.globalData.openid
       })
+    } else if (openid) {
+      this.setData({
+        openid: openid
+      })
     } else {
+
       wx.showLoading({
         title: '登录中...',
       })

@@ -9,27 +9,33 @@ App({
     var that = this;
 
     // 登录
-    wx.login({
-      success: function(res) {
-        if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: 'https://code.wdsm.io/login',
-            data: {
-              code: res.code
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: function(res) {
-              that.globalData.openid = res.data.openid;
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
+    let openid = wx.getStorageSync('openid');
+    if (!openid) {
+      wx.login({
+        success: function(res) {
+          if (res.code) {
+            //发起网络请求
+            wx.request({
+              url: 'https://code.wdsm.io/login',
+              data: {
+                code: res.code
+              },
+              header: {
+                'content-type': 'application/json'
+              },
+              success: function(res) {
+                wx.setStorageSync("openid", res.data.openid);
+                that.globalData.openid = res.data.openid;
+              }
+            })
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
         }
-      }
-    })
+      })
+    } else {
+      that.globalData.openid = openid;
+    }
     // 设备信息
     wx.getSystemInfo({
       success: res => {
