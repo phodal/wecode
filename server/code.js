@@ -96,15 +96,17 @@ module.exports.update = (event, context, callback) => {
       id: codeId
     },
     ExpressionAttributeNames: {
-      '#s_code': 'code',
-      '#s_title': 'title'
+      '#code': 'code',
+      '#title': 'title',
+      '#userId': 'userId'
     },
     ExpressionAttributeValues: {
       ':code': code,
-      ':title': title
+      ':title': title,
+      ':userId': userId
     },
-    // ConditionExpression: '#userId = :userId',
-    UpdateExpression: 'SET #s_code = :code, #s_title = :title',
+    ConditionExpression: '(#userId = :userId)',
+    UpdateExpression: 'SET #code = :code, #title = :title',
     ReturnValues: 'ALL_NEW',
   };
 
@@ -156,7 +158,14 @@ module.exports.delete = (event, context, callback) => {
     TableName: tableName,
     Key: {
       id: codeId
-    }
+    },
+    ExpressionAttributeNames: {
+      '#userId': 'userId'
+    },
+    ExpressionAttributeValues: {
+      ':userId': userId
+    },
+    ConditionExpression: '(#userId = :userId)'
   };
 
   dynamoDb.delete(params, (error, result) => {
