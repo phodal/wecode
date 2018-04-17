@@ -15,13 +15,43 @@ Page({
     height: '' //data里面增加height属性
   },
   onShow: function () {
+    let that = this;
+
     if (app.globalData.openid) {
       this.setData({
         openid: app.globalData.openid
       })
+    } else {
+      wx.showLoading({
+        title: '登录中...',
+      })
+      wx.login({
+        success: function(res) {
+          if (res.code) {
+            //发起网络请求
+            wx.request({
+              url: 'https://code.wdsm.io/login',
+              data: {
+                code: res.code
+              },
+              header: {
+                'content-type': 'application/json'
+              },
+              success: function(res) {
+                that.setData({
+                  openid: res.data.openid
+                })
+              },
+              complete: function() {
+                wx.hideLoading();
+              }
+            })
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
+        }
+      })
     }
-
-    let that = this;
 
     let id = "#textareawrap";
     let query = wx.createSelectorQuery();//创建查询对象
