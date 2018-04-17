@@ -167,7 +167,8 @@ module.exports.delete = (event, context, callback) => {
         headers: {'Content-Type': 'text/plain'},
         body: JSON.stringify({
           error: 500,
-          message: 'couldn\'t delete item.'
+          message: JSON.stringify(error),
+          result: result
         }),
       });
       return;
