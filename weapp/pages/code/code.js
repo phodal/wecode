@@ -143,7 +143,6 @@ Page({
     }
   },
   forkCode: function () {
-    console.log('forkCode')
     wx.setStorageSync("draft_code", JSON.stringify(this.data.data));
     wx.switchTab({
       url: '/pages/create/create'
@@ -163,7 +162,7 @@ Page({
     });
   },
   copyCode: function () {
-    var that = this;
+    let that = this;
     wx.setClipboardData({
       data: that.getCode(that),
       success: function (res) {
@@ -173,11 +172,11 @@ Page({
               title: '复制成功',
               icon: 'success',
               duration: 2000
-            })
+            });
             console.log(that.getCode(that)) // data
           }
         })
       }
     })
   }
-})
+});
