@@ -9,10 +9,20 @@ Page({
     title: '',
     focus: false,
     value: '',
+    codeId: '',
+    openid: '',
+    isCurrentUser: false,
     height: '' //data里面增加height属性
   },
+  onLoad: function () {
+    if (app.globalData.openid) {
+      this.setData({
+        openid: app.globalData.openid
+      })
+    }
+  },
   onShow: function () {
-    var that = this;
+    let that = this;
 
     let id = "#textareawrap";
     let query = wx.createSelectorQuery();//创建查询对象
@@ -29,7 +39,9 @@ Page({
         draft_code = JSON.parse(draft_code);
         if (draft_code.title) {
           this.setData({
-            title: draft_code.title
+            codeId: draft_code.id,
+            title: draft_code.title,
+            isCurrent: this.data.openid === draft_code.userId
           });
         }
         this.setData({
@@ -76,8 +88,12 @@ Page({
     wx.showLoading({
       title: '创建中',
     })
+    let requestUrl = 'https://code.wdsm.io/';
+    if (this.data.codeId && this.data.isCurrent) {
+      requestUrl = 'https://code.wdsm.io/code/' + this.data.codeId
+    }
     wx.request({
-      url: 'https://code.wdsm.io/',
+      url: requestUrl,
       method: 'POST',
       data: {
         title: this.data.title,
