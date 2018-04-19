@@ -10,6 +10,7 @@
   <block wx:if="{{isCurrent}}">
     <button bindtap="deleteCode" class="weui-btn mini-btn" size="mini" type="warn"> 刪除 </button>
   </block>
+    <button class="weui-btn mini-btn" bindtap="getCodeId" size="mini" type="default"> 复制 ID </button>
   <view>@Phodal</view>
 </view>
 

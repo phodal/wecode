@@ -1,1 +1,3 @@
-/* pages/code/code.wxss */
+.weui-footer button {
+  margin-right: 15rpx;
+}
