@@ -67,6 +67,17 @@ Page({
       url: '/pages/code/code?rowId=' + rowId
     })
   },
+  getUserId: function () {
+    wx.setClipboardData({
+      data: app.globalData.openid,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({title: '复制成功', icon: 'success', duration: 1000});}
+        })
+      }
+    })
+  },
   getFeaturesCode: function () {
     var that = this;
     var userId = app.globalData.openid;

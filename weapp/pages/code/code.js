@@ -174,7 +174,6 @@ Page({
     })
   },
   getCodeId: function () {
-    let that = this;
     wx.setClipboardData({
       data: '/pages/code/code?rowId=' + this.data.id,
       success: function (res) {
