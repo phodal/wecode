@@ -2,6 +2,15 @@
 
 A Serverless Code Highlight Application
 
+```
+.
+├── client    // browser side code
+├── docs      // documents
+├── server    // server side code in Serverless
+├── test      // some test scrpits
+└── weapp     // wechat app
+```
+
 API List
 ---
 
