@@ -31,6 +31,12 @@ provider:
       Effect: Allow
 
 functions:
+  verify:
+    handler: server/lfbMzPgFjx.txt
+    events:
+      - http:
+          path: /
+          method: get
   main:
     handler: server/index.handler
     events:
