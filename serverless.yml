@@ -32,10 +32,10 @@ provider:
 
 functions:
   verify:
-    handler: server/lfbMzPgFjx.txt
+    handler: server/verify.js
     events:
       - http:
-          path: /
+          path: /lfbMzPgFjx.txt
           method: get
   main:
     handler: server/index.handler
