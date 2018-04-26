@@ -32,7 +32,7 @@ provider:
 
 functions:
   verify:
-    handler: server/verify.js
+    handler: server/verify.handler
     events:
       - http:
           path: /lfbMzPgFjx.txt
