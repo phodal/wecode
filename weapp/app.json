@@ -8,10 +8,10 @@
     "pages/about/about"
   ],
   "window": {
-    "backgroundTextStyle": "dark",
+    "backgroundTextStyle": "#000",
     "navigationBarBackgroundColor": "#384452",
     "navigationBarTitleText": "今日代码",
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "#fff",
     "enablePullDownRefresh": true
   },
   "tabBar": {
