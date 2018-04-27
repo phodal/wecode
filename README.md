@@ -2,6 +2,8 @@
 
 A Serverless Code Highlight Application
 
+![Code](./docs/code.jpg)
+
 ```
 .
 ├── client    // browser side code
