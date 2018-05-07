@@ -1,4 +1,4 @@
-.hljs {
+textarea {
   display: block;
   background: white;
   padding: 0.5em;
