@@ -60,3 +60,8 @@ page {
   background: #e64340;
   color: #fff;
 }
+
+.btn.photo {
+  background: #1abc9c;
+  color: #fff;
+}

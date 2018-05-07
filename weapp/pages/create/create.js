@@ -106,6 +106,11 @@ Page({
       title: e.detail.value
     })
   },
+  capture: function (e) {
+    wx.navigateTo({
+      url: '/pages/ai/ai'
+    })
+  },
   bindFormSubmit: function (e) {
     var that = this;
     //发起网络请求

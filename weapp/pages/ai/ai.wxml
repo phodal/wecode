@@ -1,2 +1,3 @@
-<!--pages/ai/ai.wxml-->
-<text>pages/ai/ai.wxml</text>
+<button type="default" size="mini" bindtap="chooseImage">上传图片</button>
+
+<canvas style="width: {{canWidth}}px;height: {{canHeight}}px;visibility:hidden;" canvas-id="attendCanvasId"/>

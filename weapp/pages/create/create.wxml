@@ -15,6 +15,7 @@
     <view class='bottom'>
       <button formType="submit" class='btn success'>创建</button>
       <button class='btn del' bindtap="emptyTextArea">清空</button>
+      <button class='btn photo' bindtap="capture">拍照</button>
     </view>
   </view>
 </form>
