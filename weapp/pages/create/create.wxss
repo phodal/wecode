@@ -57,7 +57,7 @@ page {
 }
 
 .btn.del {
-  background: #e64340;
+  background: #f53d3d;
   color: #fff;
 }
 

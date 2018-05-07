@@ -1,1 +1,10 @@
-/* pages/ai/ai.wxss */
+.ai {
+  display: flex;
+  flex-flow:column nowrap;
+  justify-content:center;
+}
+
+.ai button {
+  margin-top: 2rem;
+  background-color: #23B7F3;
+}
