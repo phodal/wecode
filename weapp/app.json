@@ -5,7 +5,8 @@
     "pages/logs/logs",
     "pages/code/code",
     "pages/user/user",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/ai/ai"
   ],
   "window": {
     "backgroundTextStyle": "#000",
