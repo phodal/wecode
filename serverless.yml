@@ -17,6 +17,7 @@ provider:
   memorySize: 256
   timeout: 5
   environment:
+    S3: ${self:service}-${opt:stage, self:provider.stage}
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
     SLS_STAGE: ${self:custom.stage}
   iamRoleStatements:
@@ -29,6 +30,10 @@ provider:
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
       Effect: Allow
+    - Effect: Allow
+      Action:
+        - "s3:*"
+      Resource: "arn:aws:s3:::${self:provider.environment.S3}/*"
 
 functions:
   verify:
@@ -87,6 +92,13 @@ functions:
       - http:
           path: code/{codeId}
           method: delete
+  upload:
+    handler: server/handle.upload
+    events:
+      - http:
+          path: upload
+          method: post
+          cors: true
 
 resources:
   Resources:
@@ -104,3 +116,19 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:provider.environment.DYNAMODB_TABLE}
+    UploadBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.environment.S3}
+        AccessControl: PublicRead
+        CorsConfiguration:
+          CorsRules:
+          - AllowedMethods:
+            - GET
+            - PUT
+            - POST
+            - HEAD
+            AllowedOrigins:
+            - "*"
+            AllowedHeaders:
+            - "*"

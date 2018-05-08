@@ -21,6 +21,7 @@
     "highlight.js": "^9.12.0",
     "marked": "^0.3.19",
     "request": "^2.85.0",
+    "query-string": "^6.1.0",
     "shortid": "^2.2.8"
   },
   "devDependencies": {
