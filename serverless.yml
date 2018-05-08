@@ -17,7 +17,7 @@ provider:
   memorySize: 256
   timeout: 5
   environment:
-    S3: ${self:service}-${opt:stage, self:provider.stage}
+    S3: ${self:service}-storage-${opt:stage, self:provider.stage}
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
     SLS_STAGE: ${self:custom.stage}
   iamRoleStatements:

@@ -8,6 +8,7 @@ module.exports.upload = (event, context, callback) => {
 
   // Parse out the parameters of the file the client would like to upload.
   var params = queryString.parse(event.body)
+  console.log(params);
 
   // Assemble a dictionary of parameters to hand to S3: the S3 bucket name, the file name, the file type, and permissions.  Other paramters like expiration can be specified here.  See the documentation for this method for more details.
   var s3Params = {
