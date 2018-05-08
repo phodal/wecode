@@ -1,6 +1,5 @@
 const AWS = require('aws-sdk');
 
-const shortid = require('shortid');
 const bucketName = process.env.S3;
 const Utils = require('./utils');
 
