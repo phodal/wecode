@@ -1,6 +1,10 @@
 // pages/ai/ai.js
 Page({
-
+  data: {
+    canWidth: null,
+    canHeight: null,
+    files: null
+  },
   chooseImage: function (e) {//上传照片
     var that = this;
     wx.chooseImage({
@@ -12,6 +16,7 @@ Page({
         that.setData({
           files: res.tempFilePaths[0]
         });
+        that.drawCanvas();
       }
     })
   },
@@ -57,7 +62,7 @@ Page({
   uploadFileOpt: function (path) {//上传图片
     let that = this;
     wx.uploadFile({
-      url: '/api/uploadPath', //后台上传api路径
+      url: 'https://code.wdsm.io/upload', //后台上传api路径
       filePath: path,
       name: 'file',
       success: function (res) {
