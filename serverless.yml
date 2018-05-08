@@ -93,7 +93,7 @@ functions:
           path: code/{codeId}
           method: delete
   upload:
-    handler: server/handle.upload
+    handler: server/upload.upload
     events:
       - http:
           path: upload
