@@ -5,19 +5,15 @@ const shortid = require('shortid');
 const bucketName = process.env.S3;
 
 module.exports.upload = (event, context, callback) => {
-  var s3 = new AWS.S3();
+  let s3 = new AWS.S3();
+  let buffer = Buffer.from(event.body, 'base64');
 
-  var params = queryString.parse(event.body)
-  console.log(params);
-
-  var s3Params = {
+  s3.putObject({
+    Body: buffer,
     Bucket: bucketName,
-    Key:  shortid.generate(),
-    ContentType: 'image/jpeg',
-    ACL: 'public-read',
-  };
-
-  var uploadURL = s3.getSignedUrl('putObject', s3Params);
+    Key: shortid.generate() + '.jpg',
+    ContentEncoding: 'base64'
+  });
 
   callback(null, {
     statusCode: 200,
