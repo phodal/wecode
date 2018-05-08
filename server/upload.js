@@ -20,6 +20,6 @@ module.exports.upload = (event, context, callback) => {
     headers: {
       'Access-Control-Allow-Origin': '*'
     },
-    body: JSON.stringify({ uploadURL: uploadURL }),
+    body: JSON.stringify({}),
   })
 }
