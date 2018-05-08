@@ -10,6 +10,7 @@ module.exports.upload = (event, context, callback) => {
   console.log(event.body);
 
   let file = parsedBody.file;
+  console.log(file.content.toString('utf8'));
 
   s3.putObject({
     Body: file.content,
