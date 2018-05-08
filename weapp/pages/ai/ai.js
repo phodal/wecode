@@ -13,10 +13,24 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        that.setData({
-          files: res.tempFilePaths[0]
-        });
-        that.drawCanvas();
+        // that.setData({
+        //   files: res.tempFilePaths[0]
+        // });
+        // that.drawCanvas();
+        var tempFilePaths = res.tempFilePaths
+
+        wx.uploadFile({
+          url: 'https://code.wdsm.io/upload', //仅为示例，非真实的接口地址
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData:{
+            'user': 'test'
+          },
+          success: function(res){
+            var data = res.data
+            //do something
+          }
+        })
       }
     })
   },
@@ -60,7 +74,6 @@ Page({
   },
 
   uploadFileOpt: function (path) {//上传图片
-    let that = this;
     wx.uploadFile({
       url: 'https://code.wdsm.io/upload', //后台上传api路径
       filePath: path,

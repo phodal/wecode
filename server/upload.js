@@ -8,13 +8,15 @@ const Utils = require('./utils');
 module.exports.upload = (event, context, callback) => {
   let s3 = new AWS.S3();
   let parsedBody = Utils.parse(event, true);
-  console.log(parsedBody);
+  console.log(event.body);
+
   let file = parsedBody.file;
 
   s3.putObject({
     Body: file.content,
     Bucket: bucketName,
     Key: file.filename,
+    ContentEncoding: 'binary',
     ContentType: file.contentType
   }, function (err, data) {
     if (err) {
@@ -23,9 +25,6 @@ module.exports.upload = (event, context, callback) => {
 
     return callback(null, {
       statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      },
       body: JSON.stringify({})
     })
   })
