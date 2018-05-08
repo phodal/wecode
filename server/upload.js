@@ -1,12 +1,16 @@
-var AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
 
 const shortid = require('shortid');
 const bucketName = process.env.S3;
+const Utils = require('./utils');
+
 
 module.exports.upload = (event, context, callback) => {
   let s3 = new AWS.S3();
   console.log(event.body)
   let buffer = new Buffer(event.body, 'base64');
+  let parsed = Utils.parse(event, true);
+  console.log(parsed);
 
   s3.putObject({
     Body: buffer,

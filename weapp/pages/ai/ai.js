@@ -65,6 +65,9 @@ Page({
       url: 'https://code.wdsm.io/upload', //后台上传api路径
       filePath: path,
       name: 'file',
+      formData:{
+        'user': 'test'
+      },
       success: function (res) {
         console.log(res);//因uploadFile无法在network中捕获故需打印返回内容
         //to do
