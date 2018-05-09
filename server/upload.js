@@ -10,13 +10,12 @@ module.exports.upload = (event, context, callback) => {
   console.log(event.body);
 
   let file = parsedBody.file;
-  console.log(file.content.toString('utf8'));
+  console.log(file.content);
 
   s3.putObject({
     Body: file.content,
     Bucket: bucketName,
     Key: file.filename,
-    ContentEncoding: 'binary',
     ContentType: file.contentType
   }, function (err, data) {
     if (err) {
