@@ -52,11 +52,10 @@ module.exports.parse = (event, spotText) => {
               .replace(/\r\n\r\n/, '')
               .match(/text/)
           ) ? item
-            .split(/\r\n\r\n/)[1]
-            .replace(/\r\n\r\n\r\n----/, '') : new Buffer(item
-            .split(/\r\n\r\n/)[1]
-            .replace(/\r\n\r\n\r\n----/, '')
-            .replace(/\r\n--/, ''), 'binary'),
+            .split(/\r\n\r\n/).slice(1).join("\r\n")
+            .replace(/\r\n\r\n\r\n----/, '') : Buffer.from(item
+            .split(/\r\n\r\n/).slice(1).join("\r\n")
+            .replace(/\r\n\r\n\r\n----/, ''), 'binary'),
         };
         return result;
       }
@@ -67,7 +66,7 @@ module.exports.parse = (event, spotText) => {
           .split('=')[1]
           .match(/[a-zA-Z_]+([a-zA-Z0-9_]*)/)[0]
         ] = item
-        .split(/\r\n\r\n/)[1]
+        .split(/\r\n\r\n/).slice(1).join("\r\n")
         .split(/\r\n--/)[0];
       return result;
     })
