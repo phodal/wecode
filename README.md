@@ -28,6 +28,15 @@ API List
 | /code/{codeId}  | DELETE       | 删除特定代码      |
 
 
+Test Upload
+---
+
+command
+
+```
+curl -v -F file=@hello.txt https://code.wdsm.io/upload
+```
+
 License
 ---
 
