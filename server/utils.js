@@ -45,19 +45,10 @@ module.exports.parse = (event, spotText) => {
             .match(/Content-Type: .+\r\n\r\n/)[0]
             .replace(/Content-Type: /, '')
             .replace(/\r\n\r\n/, ''),
-          content: (spotText && item
-              .match(/Content-Type: .+\r\n\r\n/)[0]
-              .replace(/Content-Type: /, '')
-              .replace(/\r\n\r\n/, '')
-              .match(/text/)
-          ) ? item
-              .split(/\r\n\r\n/).slice(1).join("\r\n")
-              .replace(/\r\n\r\n\r\n----/, '')
-              .replace(/\r\n--/, '')
-            : Buffer.from(item
-              .split(/\r\n\r\n/).slice(1).join("\r\n")
-              .replace(/\r\n\r\n\r\n----/, '')
-              .replace(/\r\n--/, ''), 'binary'),
+          content: item
+            .split(/\r\n\r\n/).slice(1).join("\r\n")
+            .replace(/\r\n\r\n\r\n----/, '')
+            .replace(/\r\n--/, ''),
         };
         return result;
       }
