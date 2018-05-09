@@ -6,8 +6,8 @@ const Utils = require('./utils');
 
 module.exports.upload = (event, context, callback) => {
   let s3 = new AWS.S3();
-  let parsedBody = Utils.parse(event, true);
-  console.log(event);
+  let parsedBody = Utils.parse(event);
+  console.log(event.body);
 
   let file = parsedBody.file;
   console.log(file.content);

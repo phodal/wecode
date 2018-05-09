@@ -23,9 +23,9 @@ function getValueIgnoringKeyCase(obj, lookedKey) {
     .filter(item => item)[0];
 }
 
-module.exports.parse = (event, spotText) => {
+module.exports.parse = (event) => {
   const boundary = getValueIgnoringKeyCase(event.headers, 'Content-Type').split('=')[1];
-  const body = (event.isBase64Encoded ? Buffer.from(event.body, 'base64').toString('binary') : event.body)
+  const body = event.body
     .split(boundary)
     .filter(item => item.match(/Content-Disposition/))
     .map((item) => {
