@@ -7,10 +7,10 @@ const Utils = require('./utils');
 module.exports.upload = (event, context, callback) => {
   let s3 = new AWS.S3();
   let parsedBody = Utils.parse(event, true);
-  console.log(event.body);
+  console.log(event);
 
   let file = parsedBody.file;
-  console.log(file.content);
+  console.log(Buffer.from(file.content, 'base64'));
 
   s3.putObject({
     Body: file.content,

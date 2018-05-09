@@ -54,7 +54,7 @@ module.exports.parse = (event, spotText) => {
               .split(/\r\n\r\n/).slice(1).join("\r\n")
               .replace(/\r\n\r\n\r\n----/, '')
               .replace(/\r\n--/, '')
-            : new Buffer(item
+            : Buffer.from(item
               .split(/\r\n\r\n/).slice(1).join("\r\n")
               .replace(/\r\n\r\n\r\n----/, '')
               .replace(/\r\n--/, ''), 'binary'),
