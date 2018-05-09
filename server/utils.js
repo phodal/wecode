@@ -29,14 +29,13 @@ module.exports.parse = (event, spotText) => {
     .split(boundary)
     .filter(item => item.match(/Content-Disposition/))
     .map((item) => {
+      let itemKey = item
+        .match(/name="[a-zA-Z_]+([a-zA-Z0-9_]*)"/)[0]
+        .split('=')[1]
+        .match(/[a-zA-Z_]+([a-zA-Z0-9_]*)/)[0];
       if (item.match(/filename/)) {
         const result = {};
-        result[
-          item
-            .match(/name="[a-zA-Z_]+([a-zA-Z0-9_]*)"/)[0]
-            .split('=')[1]
-            .match(/[a-zA-Z_]+([a-zA-Z0-9_]*)/)[0]
-          ] = {
+        result[itemKey] = {
           type: 'file',
           filename: item
             .match(/filename="[\w-\. ]+"/)[0]
@@ -52,23 +51,21 @@ module.exports.parse = (event, spotText) => {
               .replace(/\r\n\r\n/, '')
               .match(/text/)
           ) ? item
-            .split(/\r\n\r\n/).slice(1).join("\r\n")
-            .replace(/\r\n\r\n\r\n----/, '') : new Buffer(item
-            .split(/\r\n\r\n/).slice(1).join("\r\n")
-            .replace(/\r\n\r\n\r\n----/, '')
-            .replace(/\r\n--/, ''), 'binary'),
+              .split(/\r\n\r\n/).slice(1).join("\r\n")
+              .replace(/\r\n\r\n\r\n----/, '')
+              .replace(/\r\n--/, '')
+            : new Buffer(item
+              .split(/\r\n\r\n/).slice(1).join("\r\n")
+              .replace(/\r\n\r\n\r\n----/, '')
+              .replace(/\r\n--/, ''), 'binary'),
         };
         return result;
       }
       const result = {};
-      result[
-        item
-          .match(/name="[a-zA-Z_]+([a-zA-Z0-9_]*)"/)[0]
-          .split('=')[1]
-          .match(/[a-zA-Z_]+([a-zA-Z0-9_]*)/)[0]
-        ] = item
+      result[itemKey] = item
         .split(/\r\n\r\n/).slice(1).join("\r\n")
         .split(/\r\n--/)[0];
+      console.log(item, result);
       return result;
     })
     .reduce((accumulator, current) => Object.assign(accumulator, current), {});
