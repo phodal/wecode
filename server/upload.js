@@ -38,9 +38,7 @@ app.post('/upload', multerupload.any(), function (req, res) {
       .getImageText(s3Config)
       .then((text) => {
         console.log(JSON.stringify(text));
-        res.status(200).send({
-          "success": JSON.stringify({Text: text})
-        })
+        res.status(200).send(text)
       })
       .catch((error) => {
         console.log(error);
