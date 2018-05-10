@@ -3,6 +3,12 @@ service: code
 plugins:
   - serverless-domain-manager
 
+package:
+  exclude:
+    - test/**
+    - weapp/**
+    - yarn-error.log
+
 custom:
   stage: ${opt:stage, self:provider.stage}
   customDomain:
