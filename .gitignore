@@ -65,3 +65,4 @@ jspm_packages
 .serverless
 config.json
 text-censor/keywords
+test/upload

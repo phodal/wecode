@@ -7,4 +7,4 @@ let encodedMessage = Buffer.from(imageData, 'binary').toString('utf8');
 // console.log(encodedMessage);
 
 console.log(Buffer.from(encodedMessage, 'utf8'));
-console.log(Buffer.from(Buffer.from(serverData2).toString("binary")));
+console.log(Buffer.from(serverData2));
