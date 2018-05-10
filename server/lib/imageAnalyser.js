@@ -23,6 +23,7 @@ class ImageAnalyser {
     return new Promise((resolve, reject) => {
       rek.detectLabels(params, (err, data) => {
         if (err) {
+          console.log(params, err);
           return reject(new Error(err));
         }
         console.log('Analysis labels:', data.Labels);

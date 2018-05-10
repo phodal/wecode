@@ -23,8 +23,7 @@ app.post('/upload', multerupload.any(), function (req, res) {
   }, function (err, data) {
     if (err) {
       console.log(`file ${file.originalname} create failure`);
-      return res.send({
-        "code": "500",
+      return res.status(500).send({
         "error": `Failed to put s3 object: ${err}`
       });
     }
@@ -38,15 +37,14 @@ app.post('/upload', multerupload.any(), function (req, res) {
     return ImageAnalyser
       .getImageLabels(s3Config)
       .then((labels) => {
-        console.log(`lables: ${labels}`);
-        res.send({
-          "code": 200,
-          "error": JSON.stringify({Labels: labels})
+        console.log(JSON.stringify(labels));
+        res.status(200).send({
+          "success": JSON.stringify({Labels: labels})
         })
       })
       .catch((error) => {
-        res.send({
-          "code": error.statusCode || 501,
+        console.log(error);
+        res.status(error.statusCode || 501).send({
           "error": error.message || 'Internal server error'
         })
       });
