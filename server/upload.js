@@ -35,11 +35,11 @@ app.post('/upload', multerupload.any(), function (req, res) {
     };
 
     return ImageAnalyser
-      .getImageLabels(s3Config)
-      .then((labels) => {
-        console.log(JSON.stringify(labels));
+      .getImageText(s3Config)
+      .then((text) => {
+        console.log(JSON.stringify(text));
         res.status(200).send({
-          "success": JSON.stringify({Labels: labels})
+          "success": JSON.stringify({Text: text})
         })
       })
       .catch((error) => {
