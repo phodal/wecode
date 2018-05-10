@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const tableName = process.env.DYNAMODB_TABLE;
-const Utils = require('./utils');
+const Utils = require('./lib/utils');
 
 module.exports.detail = (event, context, callback) => {
   let codeId = event.pathParameters.codeId;

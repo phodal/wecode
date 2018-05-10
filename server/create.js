@@ -3,7 +3,7 @@
 const AWS = require('aws-sdk');
 const shortid = require('shortid');
 const tc = require('./text-censor')
-const Utils = require('./utils');
+const Utils = require('./lib/utils');
 
 AWS.config.setPromisesDependency(Promise);
 

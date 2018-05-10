@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
 
 const bucketName = process.env.S3;
-const Utils = require('./utils');
+const Utils = require('./lib/utils');
 
 
 module.exports.upload = (event, context, callback) => {
