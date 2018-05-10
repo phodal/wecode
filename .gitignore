@@ -64,5 +64,4 @@ jspm_packages
 # Serverless directories
 .serverless
 config.json
-text-censor/keywords
 test/upload
