@@ -22,6 +22,7 @@ custom:
       - 'image/jpeg'
       - 'image/png'
       - 'text/html'
+      - 'multipart/form-data'
 
 provider:
   name: aws

@@ -24,10 +24,8 @@ Page({
           filePath: tempFilePaths[0],
           name: 'file',
           header: {
+            'Content-Type': 'image/jpeg',
             'Content-Transfer-Encoding': 'base64'
-          },
-          formData:{
-            'user': 'test'
           },
           success: function(res){
             var data = res.data
