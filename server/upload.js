@@ -2,6 +2,7 @@ const AWS = require('aws-sdk');
 
 const bucketName = process.env.S3;
 const Utils = require('./lib/utils');
+const ImageAnalyser = require('./lib/imageAnalyser');
 
 
 module.exports.upload = (event, context, callback) => {
@@ -22,9 +23,26 @@ module.exports.upload = (event, context, callback) => {
       return callback(new Error(`Failed to put s3 object: ${err}`));
     }
 
-    return callback(null, {
-      statusCode: 200,
-      body: JSON.stringify({})
-    })
+    const s3Config = {
+      bucket: bucketName,
+      imageName: file.filename,
+    };
+
+    return ImageAnalyser
+      .getImageLabels(s3Config)
+      .then((labels) => {
+        const response = {
+          statusCode: 200,
+          body: JSON.stringify({ Labels: labels }),
+        };
+        callback(null, response);
+      })
+      .catch((error) => {
+        callback(null, {
+          statusCode: error.statusCode || 501,
+          headers: { 'Content-Type': 'text/plain' },
+          body: error.message || 'Internal server error',
+        });
+      });
   })
 }
