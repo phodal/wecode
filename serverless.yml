@@ -34,6 +34,10 @@ provider:
       Action:
         - "s3:*"
       Resource: "arn:aws:s3:::${self:provider.environment.S3}/*"
+    - Effect: "Allow"
+      Action:
+        - "rekognition:*"
+      Resource: "*"
 
 functions:
   verify:
