@@ -25,6 +25,7 @@
     "multer": "^1.3.0",
     "query-string": "^6.1.0",
     "request": "^2.85.0",
+    "serverless-apigw-binary": "^0.4.4",
     "shortid": "^2.2.8"
   },
   "devDependencies": {

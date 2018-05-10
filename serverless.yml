@@ -2,6 +2,7 @@ service: code
 
 plugins:
   - serverless-domain-manager
+  - serverless-apigw-binary
 
 package:
   exclude:
@@ -16,6 +17,11 @@ custom:
     basePath: ''
     stage: ${self:provider.stage}
     createRoute53Record: true
+  apigwBinary:
+    types:
+      - 'image/jpeg'
+      - 'image/png'
+      - 'text/html'
 
 provider:
   name: aws
