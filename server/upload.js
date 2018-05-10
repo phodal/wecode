@@ -37,7 +37,7 @@ app.post('/upload', multerupload.any(), function (req, res) {
     return ImageAnalyser
       .getImageText(s3Config)
       .then((text) => {
-        console.log(JSON.stringify(text));
+        console.log(JSON.stringify(text, null, '\t'));
         res.status(200).send(text)
       })
       .catch((error) => {

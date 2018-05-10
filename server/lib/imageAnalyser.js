@@ -23,7 +23,6 @@ class ImageAnalyser {
           console.log(params, err);
           return reject(new Error(err));
         }
-        console.log('Analysis Text:', data);
         return resolve(data);
       });
     });
