@@ -23,26 +23,32 @@ module.exports.upload = (event, context, callback) => {
       return callback(new Error(`Failed to put s3 object: ${err}`));
     }
 
-    const s3Config = {
-      bucket: bucketName,
-      imageName: file.filename,
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify({}),
     };
+    callback(null, response);
 
-    return ImageAnalyser
-      .getImageLabels(s3Config)
-      .then((labels) => {
-        const response = {
-          statusCode: 200,
-          body: JSON.stringify({ Labels: labels }),
-        };
-        callback(null, response);
-      })
-      .catch((error) => {
-        callback(null, {
-          statusCode: error.statusCode || 501,
-          headers: { 'Content-Type': 'text/plain' },
-          body: error.message || 'Internal server error',
-        });
-      });
+    // const s3Config = {
+    //   bucket: bucketName,
+    //   imageName: file.filename,
+    // };
+    //
+    // return ImageAnalyser
+    //   .getImageLabels(s3Config)
+    //   .then((labels) => {
+    //     const response = {
+    //       statusCode: 200,
+    //       body: JSON.stringify({ Labels: labels }),
+    //     };
+    //     callback(null, response);
+    //   })
+    //   .catch((error) => {
+    //     callback(null, {
+    //       statusCode: error.statusCode || 501,
+    //       headers: { 'Content-Type': 'text/plain' },
+    //       body: error.message || 'Internal server error',
+    //     });
+    //   });
   })
-}
+};
