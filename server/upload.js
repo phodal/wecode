@@ -1,11 +1,28 @@
 const AWS = require('aws-sdk');
+const awsServerlessExpress = require('aws-serverless-express')
 
 const bucketName = process.env.S3;
 const Utils = require('./lib/utils');
 const ImageAnalyser = require('./lib/imageAnalyser');
 
+var express = require("express");
+var multer = require('multer');
+var multerupload = multer();
+var app = express();
+
+app.post('/upload', multerupload.any(), function(req, res){
+  console.log(req.files);
+  res.send({
+    "code":"200",
+    "success":"files printed successfully"
+  })
+});
 
 module.exports.upload = (event, context, callback) => {
+  const server = awsServerlessExpress.createServer(app)
+
+  return awsServerlessExpress.proxy(server, event, context);
+
   let s3 = new AWS.S3();
   let parsedBody = Utils.parse(event);
   console.log(event.body);
