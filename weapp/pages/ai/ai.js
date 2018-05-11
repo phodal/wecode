@@ -64,12 +64,21 @@ Page({
       url: 'https://code.wdsm.io/upload', //后台上传api路径
       filePath: path,
       name: 'file',
-      formData:{
+      formData: {
         'user': 'test'
       },
       success: function (res) {
-        console.log(res);//因uploadFile无法在network中捕获故需打印返回内容
-        //to do
+        let textDetections = JSON.parse(res.data)['TextDetections'];
+        let code = '';
+
+        for (let i = 0; i < textDetections.length; i++) {
+          let textDetection = textDetections[i];
+          if (textDetection.Type === 'LINE') {
+            code = code + textDetection.DetectedText + '\n';
+          }
+        }
+
+        console.log(code);
       },
       fail: e => {
         //to do
