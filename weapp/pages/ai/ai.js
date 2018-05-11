@@ -3,7 +3,9 @@ Page({
   data: {
     canWidth: null,
     canHeight: null,
-    files: null
+    files: null,
+    isUploading: false,
+    code: null
   },
   chooseImage: function (e) {//上传照片
     var that = this;
@@ -14,6 +16,8 @@ Page({
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         that.setData({
+          code: '',
+          isUploading: true,
           files: res.tempFilePaths[0]
         });
         that.drawCanvas();
@@ -60,6 +64,7 @@ Page({
   },
 
   uploadFileOpt: function (path) {//上传图片
+    var that = this;
     wx.uploadFile({
       url: 'https://code.wdsm.io/upload', //后台上传api路径
       filePath: path,
@@ -78,10 +83,30 @@ Page({
           }
         }
 
-        console.log(code);
+        that.setData({
+          code: code,
+          isUploading: false
+        });
       },
       fail: e => {
         //to do
+      }
+    })
+  },
+  copyCode: function () {
+    let that = this;
+    wx.setClipboardData({
+      data: that.data.code,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功',
+              icon: 'success',
+              duration: 2000
+            });
+          }
+        })
       }
     })
   }
