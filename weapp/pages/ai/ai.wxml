@@ -1,5 +1,5 @@
 <view class="ai">
-  <button type="default" class="upload" size="mini" bindtap="chooseImage">上传图片</button>
+  <button type="default" class="btn" bindtap="chooseImage">上传图片</button>
   <canvas style="width: {{canWidth}}px;height: {{canHeight}}px;visibility:hidden;" canvas-id="attendCanvasId"/>
 
   <view wx:if="{{code}}" class="weui-cells__title" size="mini">（点击复制文本）</view>
