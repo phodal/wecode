@@ -64,9 +64,6 @@ Page({
       url: 'https://code.wdsm.io/upload',
       filePath: path,
       name: 'file',
-      formData: {
-        'user': 'test'
-      },
       success: function (res) {
         let textDetections = JSON.parse(res.data)['TextDetections'];
         let code = '';
