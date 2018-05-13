@@ -1,11 +1,13 @@
 <view class="ai">
   <button type="default" class="btn" bindtap="chooseImage">上传图片</button>
-  <canvas style="width: {{canWidth}}px;height: {{canHeight}}px;visibility:hidden;" canvas-id="attendCanvasId"/>
+  <text hidden="{{!isUploading}}">上传中...</view>
 
   <view wx:if="{{code}}" class="weui-cells__title" size="mini">（点击复制文本）</view>
   <view wx:if="{{code}}" bindtap="copyCode">
      {{code}}
   </view>
+
+  <canvas style="width: {{canWidth}}px;height: {{canHeight}}px;visibility:hidden;" canvas-id="attendCanvasId"/>
 </view>
 
 <loading hidden="{{!isUploading}}">
