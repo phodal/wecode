@@ -1,6 +1,6 @@
 <view class="ai">
   <button type="default" class="btn" bindtap="chooseImage">上传图片</button>
-  <text hidden="{{!isUploading}}">上传中...</view>
+  <view hidden="{{!isUploading}}">上传中...</view>
 
   <view wx:if="{{code}}" class="weui-cells__title" size="mini">（点击复制文本）</view>
   <view wx:if="{{code}}" bindtap="copyCode">
