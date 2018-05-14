@@ -1,0 +1,25 @@
+{
+  "apps": [{
+    "name": "example-app-api",
+    "script": "src/api.js",
+    "instances": 0,
+    "exec_mode": "cluster",
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "env_production" : {
+      "NODE_ENV": "production"
+    }
+  }, {
+    "name": "example-app-worker",
+    "script": "src/worker.js",
+    "instances": 1,
+    "exec_mode": "cluster",
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "env_production" : {
+      "NODE_ENV": "production"
+    }
+  }]
+}
