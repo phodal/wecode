@@ -1,18 +1,21 @@
 {
-  "name": "example-app",
+  "name": "play-proxy",
   "version": "1.0.0",
-  "description": "Docker PM2 example app",
+  "description": "Docker Proxy",
   "main": "index.js",
   "private": "true",
   "scripts": {
     "test": "xo&& bash ./test/test.sh"
   },
-  "author": "Keymetrics <contact@keymetrics.io>",
+  "author": "Phodal HUANG <h@phodal.com>",
   "license": "MIT",
   "devDependencies": {
     "xo": "^0.18.2"
   },
   "xo": {
     "space": true
+  },
+  "dependencies": {
+    "http-proxy": "^1.17.0"
   }
 }
