@@ -1,3 +1,16 @@
+为CA生成私钥
+
+   openssl genrsa -out ca-key.pem -des 1024
+
+通过CA私钥生成CSR
+
+   openssl req -new -key ca-key.pem -out ca-csr.pem
+
+通过CSR文件和私钥生成CA证书
+
+   openssl x509 -req -in ca-csr.pem -signkey ca-key.pem -out ca-cert.pem
+ 
+
 ## Steps to generate self-signed PKCS#12 SSL certificate and export its keys:
                  
 1- Create PKCS#12 keystore (.p12 or .pfx file)
