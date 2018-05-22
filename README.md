@@ -37,6 +37,12 @@ command
 curl -v -F file=@hello.txt https://code.wdsm.io/upload
 ```
 
+Documents
+---
+
+ - [Serverless 打造智能微信小程序：图像识别分析文本](https://www.phodal.com/blog/serverless-rekognition-build-smart-weapp/)
+ - [在微信群讨论代码，你可能需要这个语法高亮的小程序](https://zhuanlan.zhihu.com/p/36203850)
+
 License
 ---
 
