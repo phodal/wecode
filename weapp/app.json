@@ -6,7 +6,8 @@
     "pages/code/code",
     "pages/user/user",
     "pages/about/about",
-    "pages/ai/ai"
+    "pages/ai/ai",
+    "pages/helper/helper"
   ],
   "window": {
     "backgroundTextStyle": "#000",
