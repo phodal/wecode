@@ -1,4 +1,4 @@
-service: code2
+service: code
 
 plugins:
   - serverless-domain-manager
@@ -15,6 +15,7 @@ custom:
   customDomain:
     domainName: code.wdsm.io
     basePath: ''
+    certificateName: '*.wdsm.io'
     stage: ${self:provider.stage}
     createRoute53Record: true
   apigwBinary:

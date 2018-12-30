@@ -29,6 +29,6 @@
     "shortid": "^2.2.8"
   },
   "devDependencies": {
-    "serverless-domain-manager": "^2.3.6"
+    "serverless-domain-manager": "^2.6.9"
   }
 }

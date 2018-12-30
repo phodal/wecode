@@ -723,9 +723,10 @@ serverless-apigw-binary@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/serverless-apigw-binary/-/serverless-apigw-binary-0.4.4.tgz#f3cffd8365322a2a1d8bde5fd94b306b7a64d4fb"
 
-serverless-domain-manager@^2.3.6:
-  version "2.3.6"
-  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-2.3.6.tgz#4ad0b51b27ed1bd69fe5a95ce7d53225d7a24c44"
+serverless-domain-manager@^2.6.9:
+  version "2.6.10"
+  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-2.6.10.tgz#1a198f39ec98f03fae5f5a057ca48cc85e39d902"
+  integrity sha512-z71N4/eV0tV9M3xh4SyyLxCykzEedoSK0Lj57MhkKGZeIw7mWrXzHxCOmHdP8+fIkG3+SE6m3U8VJfU0alfy5A==
   dependencies:
     aws-sdk "^2.177.0"
     chalk "^2.0.1"
